@@ -1,0 +1,25 @@
+PODS:
+  - Alamofire (3.4.1)
+  - GoogleMaps (1.13.2)
+  - NCMB (2.3.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - GoogleMaps
+  - NCMB (from `https://github.com/NIFTYCloud-mbaas/ncmb_ios.git`)
+
+EXTERNAL SOURCES:
+  NCMB:
+    :git: https://github.com/NIFTYCloud-mbaas/ncmb_ios.git
+
+CHECKOUT OPTIONS:
+  NCMB:
+    :commit: 0bc471b471fe23e1346607086576956507d2e35e
+    :git: https://github.com/NIFTYCloud-mbaas/ncmb_ios.git
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
+  NCMB: 0a2d8732ef733a55e8fba69f9fb3d04d442da3a9
+
+COCOAPODS: 0.39.0
