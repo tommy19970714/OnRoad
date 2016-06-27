@@ -15,6 +15,8 @@
 		8F1311A11D1FDEB300805E4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F13119F1D1FDEB300805E4F /* LaunchScreen.storyboard */; };
 		8F1311AC1D1FDEB300805E4F /* OnRoadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1311AB1D1FDEB300805E4F /* OnRoadTests.swift */; };
 		8F1311B71D1FDEB300805E4F /* OnRoadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1311B61D1FDEB300805E4F /* OnRoadUITests.swift */; };
+		8F3D95F91D21743800BA9EE6 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3D95F81D21743800BA9EE6 /* CustomAnnotation.swift */; };
+		8F3D95FB1D2177DD00BA9EE6 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3D95FA1D2177DD00BA9EE6 /* CustomCalloutView.swift */; };
 		8F3F00AE1D202E3100BCC0DD /* DataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F00AD1D202E3100BCC0DD /* DataList.swift */; };
 		8F52370C1D215AC9008984F2 /* DataListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F52370B1D215AC9008984F2 /* DataListModel.swift */; };
 		8FA646A61D1FFF65007B864D /* SaveJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA646A51D1FFF65007B864D /* SaveJsonModel.swift */; };
@@ -54,6 +56,8 @@
 		8F1311B21D1FDEB300805E4F /* OnRoadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnRoadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1311B61D1FDEB300805E4F /* OnRoadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRoadUITests.swift; sourceTree = "<group>"; };
 		8F1311B81D1FDEB300805E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F3D95F81D21743800BA9EE6 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		8F3D95FA1D2177DD00BA9EE6 /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 		8F3F00AD1D202E3100BCC0DD /* DataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataList.swift; sourceTree = "<group>"; };
 		8F4228201D1FDF9000561313 /* OnRoad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnRoad-Bridging-Header.h"; sourceTree = "<group>"; };
 		8F52370B1D215AC9008984F2 /* DataListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataListModel.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				8FA646A91D2025CF007B864D /* GetDataModel.swift */,
 				8F3F00AD1D202E3100BCC0DD /* DataList.swift */,
 				8F52370B1D215AC9008984F2 /* DataListModel.swift */,
+				8F3D95F81D21743800BA9EE6 /* CustomAnnotation.swift */,
+				8F3D95FA1D2177DD00BA9EE6 /* CustomCalloutView.swift */,
 			);
 			path = OnRoad;
 			sourceTree = "<group>";
@@ -353,7 +359,9 @@
 			files = (
 				8FA646A61D1FFF65007B864D /* SaveJsonModel.swift in Sources */,
 				8FA646AA1D2025CF007B864D /* GetDataModel.swift in Sources */,
+				8F3D95F91D21743800BA9EE6 /* CustomAnnotation.swift in Sources */,
 				8F3F00AE1D202E3100BCC0DD /* DataList.swift in Sources */,
+				8F3D95FB1D2177DD00BA9EE6 /* CustomCalloutView.swift in Sources */,
 				8F1311991D1FDEB300805E4F /* ViewController.swift in Sources */,
 				8F52370C1D215AC9008984F2 /* DataListModel.swift in Sources */,
 				8F1311971D1FDEB300805E4F /* AppDelegate.swift in Sources */,
