@@ -132,7 +132,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
     }
-    
+    func mapView(mapView: MKMapView,annotationView view: MKAnnotationView,calloutAccessoryControlTapped control: UIControl)
+    {
+        let streetViewController = StreetViewController()
+        streetViewController.location = view.annotation?.coordinate
+        let nav = UINavigationController(rootViewController: streetViewController)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if keyPath == "dataLists"{
@@ -156,7 +162,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    static func present(from: UIViewController) {
+        let vc = ViewController.instantiate()
+        from.presentViewController(vc, animated: true, completion: nil)
+    }
 }
 
