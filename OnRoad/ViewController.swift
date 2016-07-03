@@ -15,6 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var isloaded:Bool = false
+    var type = "cafe"
     
     var dataLists:[DataList] = []
     
@@ -68,6 +69,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         DataListModel.sharedInstance.addObserver(self, forKeyPath: "dataLists", options: [.New], context: nil)
     }
     
+    @IBAction func tappedButton1(sender: UIButton) {
+        
+        
+    }
+    @IBAction func tappedButton2(sender: UIButton) {
+        
+    }
+    @IBAction func tappedButton3(sender: UIButton) {
+        
+    }
+    @IBAction func tappedButton4(sender: UIButton) {
+        
+    }
+    @IBAction func tappedButton5(sender: UIButton) {
+        
+    }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
@@ -95,10 +112,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         {
             return
         }
-        DataListModel.sharedInstance.update(mapView.region)
+//        DataListModel.sharedInstance.updateOpenData(mapView.region,type:type)
+        DataListModel.sharedInstance.updatePlaceAPI(mapView.region, type: Types.gas_station.rawValue)
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         if annotation === mapView.userLocation { // 現在地を示すアノテーションの場合はデフォルトのまま
             return nil
@@ -112,6 +130,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             // annotationが見つからなかったら新しくannotationを生成.
             if myAnnotation == nil {
                 myAnnotation = MKAnnotationView(annotation: annotation, reuseIdentifier: myIdentifier)
+                
+                let buttonImage = UIImage(named: "3")
+                let arrowButton = UIButton()
+                arrowButton.frame = CGRectMake(0, 0, 40, 44)
+                arrowButton.setImage(buttonImage, forState: .Normal)
+                myAnnotation.rightCalloutAccessoryView = arrowButton as UIButton
                 myAnnotation.canShowCallout = true
             }
             
@@ -134,10 +158,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     func mapView(mapView: MKMapView,annotationView view: MKAnnotationView,calloutAccessoryControlTapped control: UIControl)
     {
-        let streetViewController = StreetViewController()
-        streetViewController.location = view.annotation?.coordinate
-        let nav = UINavigationController(rootViewController: streetViewController)
-        self.presentViewController(nav, animated: true, completion: nil)
+        if control == view.rightCalloutAccessoryView
+        {
+            let streetViewController = StreetViewController()
+            streetViewController.location = view.annotation?.coordinate
+            self.navigationController!.pushViewController(streetViewController, animated: true)
+        }
+        
     }
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
@@ -161,11 +188,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    static func present(from: UIViewController) {
-        let vc = ViewController.instantiate()
-        from.presentViewController(vc, animated: true, completion: nil)
     }
 }
 

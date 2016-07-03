@@ -21,5 +21,4 @@ class StreetViewController: UIViewController {
         
         self.view = panoView;
     }
-    
 }

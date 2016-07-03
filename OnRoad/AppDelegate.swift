@@ -9,10 +9,12 @@
 import UIKit
 import NCMB
 import GoogleMaps
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    private var myNavigationController: UINavigationController?
     
     //********** APIキーの設定 **********
     let applicationkey = "1da723c029fbce317b29a3888e237ec5d13cdada402e2ea0463a5b537980166f"
@@ -25,6 +27,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Google Mapsの初期設定
         GMSServices.provideAPIKey(cGoogleMapsAPIKey)
+        
+        // ViewControllerを生成する.
+        let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+        let myFirstViewController : ViewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+        // Navication Controllerを生成する.
+        myNavigationController = UINavigationController(rootViewController: myFirstViewController)
+        //横スライドメニュー作成
+        let menuViewController = LeftViewController()
+        let slideMenuController = SlideMenuController(mainViewController: myNavigationController!, leftMenuViewController: menuViewController)
+        // UIWindowを生成する.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        // rootViewControllerにNatigationControllerを設定する.
+        self.window?.rootViewController = slideMenuController
+        
+        self.window?.makeKeyAndVisible()
+        
         
         return true
     }

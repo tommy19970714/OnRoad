@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OnRoad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="OnRoad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,20 +21,66 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2f1-oN-HRI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8S-7a-hIc">
+                                <rect key="frame" x="21" y="550" width="55" height="30"/>
+                                <state key="normal" title="Button5"/>
+                                <connections>
+                                    <action selector="tappedButton5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v2Y-va-p7s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1A-NV-iKf">
+                                <rect key="frame" x="20" y="495" width="56" height="30"/>
+                                <state key="normal" title="Button4"/>
+                                <connections>
+                                    <action selector="tappedButton4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ccC-Mf-Orm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZjZ-cx-gx4">
+                                <rect key="frame" x="21" y="440" width="55" height="30"/>
+                                <state key="normal" title="Button3"/>
+                                <connections>
+                                    <action selector="tappedButton3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cQY-wg-LfQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIV-Yh-gfo">
+                                <rect key="frame" x="21" y="390" width="55" height="30"/>
+                                <state key="normal" title="Button2"/>
+                                <connections>
+                                    <action selector="tappedButton2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rm1-YB-Yv3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dv-CF-5h2">
+                                <rect key="frame" x="22" y="331" width="52" height="30"/>
+                                <state key="normal" title="Button1"/>
+                                <connections>
+                                    <action selector="tappedButton1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8ZG-st-k9y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="f1A-NV-iKf" firstAttribute="top" secondItem="ZjZ-cx-gx4" secondAttribute="bottom" constant="25" id="8DX-b0-9yJ"/>
+                            <constraint firstItem="0dv-CF-5h2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="Avg-A4-sdn"/>
+                            <constraint firstItem="k8S-7a-hIc" firstAttribute="top" secondItem="f1A-NV-iKf" secondAttribute="bottom" constant="25" id="IGQ-KR-CMi"/>
+                            <constraint firstItem="k8S-7a-hIc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="NSV-We-otV"/>
                             <constraint firstItem="2f1-oN-HRI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="W9s-2z-8LY"/>
+                            <constraint firstItem="lIV-Yh-gfo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="cJi-vz-gIB"/>
+                            <constraint firstItem="ZjZ-cx-gx4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="eMR-SD-HOw"/>
+                            <constraint firstItem="ZjZ-cx-gx4" firstAttribute="top" secondItem="lIV-Yh-gfo" secondAttribute="bottom" constant="20" id="nqr-PP-TyL"/>
                             <constraint firstItem="2f1-oN-HRI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="p9P-5K-BcK"/>
+                            <constraint firstItem="lIV-Yh-gfo" firstAttribute="top" secondItem="0dv-CF-5h2" secondAttribute="bottom" constant="29" id="thc-63-c3i"/>
+                            <constraint firstItem="f1A-NV-iKf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="wqi-Co-sEk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="k8S-7a-hIc" secondAttribute="bottom" constant="20" id="zij-7l-w2g"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="x4Z-Vb-LoM"/>
                     <connections>
-                        <outlet property="mapView" destination="2f1-oN-HRI" id="Y5C-go-WhC"/>
+                        <outlet property="mapView" destination="2f1-oN-HRI" id="Zin-1F-1io"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="387"/>
+            <point key="canvasLocation" x="1929" y="387"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="ULm-rS-phF">
@@ -77,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsO-qA-TDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="363" y="1105"/>
+            <point key="canvasLocation" x="2623" y="381"/>
         </scene>
     </scenes>
 </document>

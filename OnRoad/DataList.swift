@@ -13,10 +13,16 @@ class DataList: NSObject {
     var objectId:String?
     var title:String?
     var location:CLLocationCoordinate2D?
+    var type:String?
+    
     var endTime:NSDate?
     var startTime:NSDate?
     var createDate:String?
     var updateDate:String?
+    
+    
+    var placeId:String?
+    var vicinity:String?
     
     func getIntervalTime() -> String
     {
