@@ -25,12 +25,21 @@ class DataListModel: NSObject {
         return self.dataLists
     }
     
-    func update(region:MKCoordinateRegion){
-        
-        print("updare")
+    func updateOpenData(region:MKCoordinateRegion,type:String){
         
         let getDataModel = GetDataModel(region: region)
         getDataModel.getOpenData({result in
+            self.dataLists = result
+            
+        })
+        
+    }
+    
+    func updatePlaceAPI(region:MKCoordinateRegion,type:String){
+        
+        let placeApiModel = PlaceApiModel(region: region)
+        placeApiModel.type = type
+        placeApiModel.getPlaceData({result in
             self.dataLists = result
             
         })
