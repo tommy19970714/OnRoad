@@ -30,6 +30,7 @@
 		8FCB51F31D2531E1006E4CBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F21D2531E1006E4CBD /* User.swift */; };
 		8FCB51F51D253719006E4CBD /* PlaceApiMdel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */; };
 		8FCB51F71D253E8D006E4CBD /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F61D253E8D006E4CBD /* GooglePlaces.swift */; };
+		8FE874501D2AB85A0064D901 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE8744F1D2AB85A0064D901 /* CustomUIButton.swift */; };
 		C370020ADB3E64D018218F49 /* Pods_OnRoad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D6BC8A4C2792098E32285D /* Pods_OnRoad.framework */; };
 		D192CE37C69905E30B33F53F /* Pods_OnRoadTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B55D6A534FAD105C84DF6E8 /* Pods_OnRoadTests.framework */; };
 		F42AD142B2FAEB977A96583A /* Pods_OnRoadUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6C34D748E7031D8B798F76 /* Pods_OnRoadUITests.framework */; };
@@ -87,6 +88,7 @@
 		8FCB51F21D2531E1006E4CBD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceApiMdel.swift; sourceTree = "<group>"; };
 		8FCB51F61D253E8D006E4CBD /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
+		8FE8744F1D2AB85A0064D901 /* CustomUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
 		A6CD3DAD302D7FB8627D2B2E /* Pods-OnRoadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnRoadUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnRoadUITests/Pods-OnRoadUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF3B18F547F50B032A144CC9 /* Pods-OnRoadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnRoadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnRoadUITests/Pods-OnRoadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9306B7038E3BFBBE164F7C3 /* Pods-OnRoad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnRoad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnRoad/Pods-OnRoad.debug.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */,
 				8FCB51F61D253E8D006E4CBD /* GooglePlaces.swift */,
 				8F802D991D2955C700893D90 /* Types.swift */,
+				8FE8744F1D2AB85A0064D901 /* CustomUIButton.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				8F3F00AE1D202E3100BCC0DD /* DataList.swift in Sources */,
 				8F3D95FB1D2177DD00BA9EE6 /* CustomCalloutView.swift in Sources */,
 				8FCB51F31D2531E1006E4CBD /* User.swift in Sources */,
+				8FE874501D2AB85A0064D901 /* CustomUIButton.swift in Sources */,
 				8F1311991D1FDEB300805E4F /* ViewController.swift in Sources */,
 				8F52370C1D215AC9008984F2 /* DataListModel.swift in Sources */,
 				8F1311971D1FDEB300805E4F /* AppDelegate.swift in Sources */,

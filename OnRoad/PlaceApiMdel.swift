@@ -17,6 +17,7 @@ class PlaceApiModel: NSObject {
     let accessKey = "AIzaSyAHO_ggw_eXr08BLFFSoxnvCKVF_Bz41IQ"
     
     var type:String?
+    var types:[String] = []
     var location:CLLocationCoordinate2D?
     
     var next_page_token:String?
@@ -30,26 +31,22 @@ class PlaceApiModel: NSObject {
         let point1 = MKMapPointForCoordinate(swGeoPoint)
         let point2 = MKMapPointForCoordinate(neGeoPoint)
         
-        
         distance = MKMetersBetweenMapPoints(point1,point2)/3
         location = region.center
-        
     }
     
     func getPlaceData(callback: ([DataList]->()))
     {
+        
         let locationStr:String = stringLoaction(location!)
-        print(distance)
-        print(locationStr)
-        Alamofire.request(.GET, requestURL, parameters: ["key" : accessKey,"location": locationStr,"radius":distance, "types": type!])
+        Alamofire.request(.GET, requestURL, parameters: ["key" : accessKey,"location": locationStr,"rankby":"distance", "types": type!])
             .responseJSON {responce in
                 if responce.result.isSuccess {
-//                    print(json.request)
                     let json: JSON = JSON(responce.result.value!)
                     var datalists:[DataList] = []
                     
-                    print(json)
-                    for i in 0...json["results"].count
+//                    print(json)
+                    for i in 0...json["results"].count-1
                     {
                         let dataList = DataList()
                         dataList.objectId = json["results"][i]["id"].string
@@ -60,9 +57,27 @@ class PlaceApiModel: NSObject {
                         coordinate.longitude = json["results"][i]["geometry"]["location"]["lng"].doubleValue
                         dataList.location = coordinate
                         dataList.vicinity = json["results"][i]["vicinity"].string
-                        dataList.type = self.type
+                        var dataTypes:[String] = []
+                        print(json["results"][i]["types"])
+                        for j in 0...json["results"][i]["types"].count-1
+                        {
+                            let myType = json["results"][i]["types"][j].string
+                            dataTypes.append(myType!)
+                            for k in 0...self.types.count-1
+                            {
+                                print(json["results"][i]["types"][j].string)
+                                if self.types[k] == myType
+                                {
+                                    dataList.type = myType!
+                                }
+                            }
+                        }
+                        dataList.types = dataTypes
                         
-                        datalists.append(dataList)
+//                        if dataList.type != nil
+//                        {
+                            datalists.append(dataList)
+//                        }
                     }
 //                    if json["next_page_token"].string == nil
 //                    {
@@ -149,6 +164,27 @@ class PlaceApiModel: NSObject {
         let lat = round(coordinate.latitude*pow(10,10))/pow(10,10)
         let dot:String = ","
         return String(lat) + dot + String(lon)
+    }
+    
+    func setTypeString(types:[String])
+    {
+        self.types = types
+        if types.isEmpty
+        {
+            return
+        }
+        else if types.count == 1
+        {
+            self.type = types[0]
+            return
+        }
+        
+        var result:String = ""
+        for t in types
+        {
+            result += t + "|"
+        }
+        self.type = result.chopSuffix(1)
     }
 }
 

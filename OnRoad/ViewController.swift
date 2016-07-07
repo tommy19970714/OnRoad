@@ -15,9 +15,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var isloaded:Bool = false
-    var type = "cafe"
+//    var types : [String] = Types.allType
+    var types:[String] = []
     
     var dataLists:[DataList] = []
+    
+    @IBOutlet weak var button0: CustomUIButton!
+    @IBOutlet weak var button1: CustomUIButton!
+    @IBOutlet weak var button2: CustomUIButton!
+    @IBOutlet weak var button3: CustomUIButton!
+    @IBOutlet weak var button4: CustomUIButton!
+    @IBOutlet weak var button5: CustomUIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +64,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 break
             }
         }
+        button0.setIcon("Opendata")
+        button1.setIcon("パーキング")
+        button2.setIcon("食事処")
+        button3.setIcon("ガソリンスタンド")
+        button4.setIcon("仕事")
+        button5.setIcon("コンビニ")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -69,21 +83,41 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         DataListModel.sharedInstance.addObserver(self, forKeyPath: "dataLists", options: [.New], context: nil)
     }
     
-    @IBAction func tappedButton1(sender: UIButton) {
-        
-        
+    @IBAction func tappedButton0(sender: CustomUIButton) {
+        changeType(sender, type: Types.opendata.rawValue)
+        sender.changeSw()
     }
-    @IBAction func tappedButton2(sender: UIButton) {
-        
+    @IBAction func tappedButton1(sender: CustomUIButton) {
+        changeType(sender, type: Types.parking.rawValue)
+        sender.changeSw()
     }
-    @IBAction func tappedButton3(sender: UIButton) {
-        
+    @IBAction func tappedButton2(sender: CustomUIButton) {
+        changeType(sender, type: Types.food.rawValue)
+        sender.changeSw()
     }
-    @IBAction func tappedButton4(sender: UIButton) {
-        
+    @IBAction func tappedButton3(sender: CustomUIButton) {
+        changeType(sender, type: Types.gas_station.rawValue)
+        sender.changeSw()
     }
-    @IBAction func tappedButton5(sender: UIButton) {
-        
+    @IBAction func tappedButton4(sender: CustomUIButton) {
+        sender.changeSw()
+    }
+    @IBAction func tappedButton5(sender: CustomUIButton) {
+        changeType(sender, type: Types.convenience_store.rawValue)
+        sender.changeSw()
+    }
+    
+    func changeType(sender:CustomUIButton,type:String)
+    {
+        if sender.getSw() == true
+        {
+            types.removeAtIndex(types.indexOf(type)!)
+        }
+        else
+        {
+            types.append(type)
+        }
+        print(types)
     }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
@@ -113,7 +147,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             return
         }
 //        DataListModel.sharedInstance.updateOpenData(mapView.region,type:type)
-        DataListModel.sharedInstance.updatePlaceAPI(mapView.region, type: Types.gas_station.rawValue)
+        DataListModel.sharedInstance.update(mapView.region, types: types)
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
@@ -173,14 +207,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.dataLists = DataListModel.sharedInstance.getData()
             mapView.removeAnnotations(mapView.annotations)
             for data in dataLists{
-                let annotation = CustomAnnotaion()
-                annotation.coordinate = data.location!
-                annotation.title = data.title
-                annotation.subtitle = data.getIntervalTime()
-                annotation.image = UIImage(named: "3")
-                print(data.title)
-                
-                mapView.addAnnotation(annotation)
+                    let annotation = CustomAnnotaion()
+                    annotation.coordinate = data.location!
+                    annotation.title = data.title
+                    annotation.subtitle = data.getIntervalTime()
+                    
+                    annotation.image = UIImage(named: data.type!)
+                    print(data.title)
+                    
+                    mapView.addAnnotation(annotation)
             }
         }
     }
