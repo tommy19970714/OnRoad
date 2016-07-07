@@ -31,9 +31,8 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
         
         self.view.addSubview(tableView)
         
-        myUser.full_name = "toshiki tomihira"
-        myUser.id = "1111"
-        myUser.username = "tommy"
+        myUser.id = UserDefaults.userId
+        myUser.username = UserDefaults.userName
         
     }
     override func viewWillDisappear(animated: Bool) {

@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = controller
         self.window?.makeKeyAndVisible()
         
+        UserDefaults.userId = "vdhsaknjavs"
+        UserDefaults.userName = "toshiki"
+        
         return true
     }
 

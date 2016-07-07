@@ -62,4 +62,40 @@ class GetDataModel: NSObject {
             }
         })
     }
+    
+    func getWorkData(callback: (([DataList])->()))
+    {
+        // クラスのNCMBObjectを作成
+        let obj3 = NCMBQuery(className: "WorkData")
+        // objectIdプロパティを設定
+        obj3.whereKey("StartPoint", withinGeoBoxFromSouthwest: swGeoPoint!, toNortheast:neGeoPoint!)
+        obj3.limit = 100
+        // 設定されたobjectIdを元にデータストアからデータを取得
+        obj3.findObjectsInBackgroundWithBlock({(objects, error) in
+            if error != nil {
+                // 取得に失敗した場合の処理
+            }else{
+                // 取得に成功した場合の処理
+                
+                var dataLists:[DataList] = []
+                for data in objects{
+                    var dataList = DataList()
+                    let place = data.objectForKey("Location") as! NCMBGeoPoint
+                    dataList.location = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+                    
+                    dataList.objectId = data.objectId
+                    dataList.title = data.objectForKey("Title") as! String
+                    dataList.startTime = data.objectForKey("StartTime") as! NSDate
+                    dataList.endTime = data.objectForKey("EndTime") as! NSDate
+                    dataList.updateDate = data.objectForKey("updateDate") as! String
+                    dataList.createDate = data.objectForKey("createDate") as! String
+                    dataList.carType = data.objectForKey("carType") as! String
+                    dataList.type = Types.opendata.rawValue
+                    
+                    dataLists.append(dataList)
+                }
+                callback(dataLists)
+            }
+        })
+    }
 }
