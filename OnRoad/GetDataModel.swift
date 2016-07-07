@@ -53,6 +53,7 @@ class GetDataModel: NSObject {
                     dataList.endTime = data.objectForKey("EndTime") as! NSDate
                     dataList.updateDate = data.objectForKey("updateDate") as! String
                     dataList.createDate = data.objectForKey("createDate") as! String
+                    dataList.carType = data.objectForKey("carType") as! String
                     dataList.type = Types.opendata.rawValue
                     
                     dataLists.append(dataList)

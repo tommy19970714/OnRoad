@@ -19,7 +19,7 @@ class DataList: NSObject {
     var startTime:NSDate?
     var createDate:String?
     var updateDate:String?
-    
+    var carType:String?
     
     var placeId:String?
     var vicinity:String?
