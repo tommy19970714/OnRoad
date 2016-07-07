@@ -9,10 +9,14 @@
 import UIKit
 import GoogleMaps
 import MapKit
+import SlideMenuControllerSwift
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
+    var searchBar: UISearchBar!
+    var menubutton: UIBarButtonItem!
+    
     var locationManager: CLLocationManager!
     var isloaded:Bool = false
 //    var types : [String] = Types.allType
@@ -36,6 +40,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.delegate = self
         mapView.showsUserLocation = true
         locationManager = CLLocationManager()
+        
+        setupSearchBar()
         
         if (locationManager != NSNull()) {
             locationManager?.delegate = self
@@ -70,6 +76,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         button3.setIcon("ガソリンスタンド")
         button4.setIcon("仕事")
         button5.setIcon("コンビニ")
+        
+        menubutton = UIBarButtonItem(image: UIImage(named: "menu"), style: .Plain, target: self, action: #selector(ViewController.clickMenu(_:)))
+        self.navigationItem.leftBarButtonItem = menubutton
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.segueRequestWorkView(_:)), name: "segueRequestWorkView", object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -120,6 +131,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         print(types)
     }
     
+    func clickMenu(sender:UIButton)
+    {
+        self.slideMenuController()?.openLeft()
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         
         let latitude = newLocation.coordinate.latitude
@@ -146,7 +162,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         {
             return
         }
-//        DataListModel.sharedInstance.updateOpenData(mapView.region,type:type)
         DataListModel.sharedInstance.update(mapView.region, types: types)
     }
     
@@ -220,9 +235,66 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
 
+    // MARK: - private methods
+    private func setupSearchBar() {
+        if let navigationBarFrame = navigationController?.navigationBar.bounds {
+            let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
+            searchBar.delegate = self
+            searchBar.placeholder = "検索"
+            searchBar.showsCancelButton = false
+            searchBar.autocapitalizationType = UITextAutocapitalizationType.None
+            searchBar.keyboardType = UIKeyboardType.Default
+            navigationItem.titleView = searchBar
+            navigationItem.titleView?.frame = searchBar.frame
+            self.searchBar = searchBar
+        }
+    }
+    
+    //テキストが変更される毎に呼ばれる
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+
+        
+    }
+    
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        self.searchBar.showsCancelButton = true
+        self.navigationItem.leftBarButtonItem = nil
+        
+        return true
+    }
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        self.searchBar.showsCancelButton = false
+        self.navigationItem.leftBarButtonItem = menubutton
+        self.searchBar.resignFirstResponder()
+        
+        return true
+    }
+    
+    // Cancelボタンが押された時に呼ばれる
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        
+        self.searchBar.resignFirstResponder()
+    }
+    
+    // Searchボタンが押された時に呼ばれる
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+        self.view.endEditing(true)
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func segueRequestWorkView(sender:NSNotification)
+    {
+        let requestWorkViewController = RequestWorkViewController()
+        requestWorkViewController.message = "ここで荷物を積む"
+        let nav = UINavigationController(rootViewController: requestWorkViewController)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
 }
 

@@ -28,21 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Google Mapsの初期設定
         GMSServices.provideAPIKey(cGoogleMapsAPIKey)
         
+        //navigationbar
+        UINavigationBar.appearance().barTintColor = Color.green
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
         // ViewControllerを生成する.
         let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
         let myFirstViewController : ViewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
-        // Navication Controllerを生成する.
-        myNavigationController = UINavigationController(rootViewController: myFirstViewController)
-        //横スライドメニュー作成
-        let menuViewController = LeftViewController()
-        let slideMenuController = SlideMenuController(mainViewController: myNavigationController!, leftMenuViewController: menuViewController)
-        // UIWindowを生成する.
+
+        let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
+        let slideMenuController = SlideMenuController(mainViewController: myNavigationController, leftMenuViewController: LeftMenuViewController())
+        let controller = slideMenuController
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // rootViewControllerにNatigationControllerを設定する.
-        self.window?.rootViewController = slideMenuController
-        
+        self.window?.rootViewController = controller
         self.window?.makeKeyAndVisible()
-        
         
         return true
     }
