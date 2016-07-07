@@ -23,6 +23,7 @@ class DataList: NSObject {
     
     var placeId:String?
     var vicinity:String?
+    var types:[String]?
     
     func getIntervalTime() -> String
     {

@@ -25,7 +25,36 @@ class DataListModel: NSObject {
         return self.dataLists
     }
     
-    func updateOpenData(region:MKCoordinateRegion,type:String){
+    func update(region:MKCoordinateRegion,types:[String])
+    {
+        if types.isEmpty
+        {
+            dataLists.removeAll()
+            return
+        }
+        dataLists.removeAll()
+        if (types.indexOf(Types.opendata.rawValue) != nil)
+        {
+            let getDataModel = GetDataModel(region: region)
+            getDataModel.getOpenData({result in
+                self.dataLists += result
+            })
+        }
+        
+        if (types.count != 1 || types[0] != Types.opendata.rawValue)
+        {
+            let placeApiModel = PlaceApiModel(region: region)
+            placeApiModel.setTypeString(types)
+            placeApiModel.getPlaceData({result in
+                self.dataLists += result
+                
+            })
+        }
+
+        
+    }
+    
+    func updateOpenData(region:MKCoordinateRegion){
         
         let getDataModel = GetDataModel(region: region)
         getDataModel.getOpenData({result in
@@ -35,10 +64,13 @@ class DataListModel: NSObject {
         
     }
     
-    func updatePlaceAPI(region:MKCoordinateRegion,type:String){
-        
+    func updatePlaceAPI(region:MKCoordinateRegion,types:[String]){
+        if types.isEmpty
+        {
+            return
+        }
         let placeApiModel = PlaceApiModel(region: region)
-        placeApiModel.type = type
+        placeApiModel.setTypeString(types)
         placeApiModel.getPlaceData({result in
             self.dataLists = result
             
