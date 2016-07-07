@@ -116,6 +116,13 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
             requestWorkViewController.message = "ここで荷物を下ろす"
             self.navigationController!.pushViewController(requestWorkViewController, animated: true)
         }
+        else
+        {
+            let requestFromViewController = RequestFormViewController()
+            requestFromViewController.startLocation = location
+            requestFromViewController.endLocation = mapView.centerCoordinate
+            self.navigationController!.pushViewController(requestFromViewController, animated: true)
+        }
     }
     
     func backHome(sender:UIButton) {
