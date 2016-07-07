@@ -10,20 +10,25 @@ import Foundation
 
 class DataList: NSObject {
     
+    //共通
     var objectId:String?
     var title:String?
     var location:CLLocationCoordinate2D?
     var type:String?
     
+    //opendata
     var endTime:NSDate?
     var startTime:NSDate?
     var createDate:String?
     var updateDate:String?
     var carType:String?
     
+    //google place
     var placeId:String?
     var vicinity:String?
     var types:[String]?
+    
+    //workData
     
     func getIntervalTime() -> String
     {

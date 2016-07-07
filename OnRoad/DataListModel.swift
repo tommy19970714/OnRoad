@@ -59,7 +59,6 @@ class DataListModel: NSObject {
         let getDataModel = GetDataModel(region: region)
         getDataModel.getOpenData({result in
             self.dataLists = result
-            
         })
         
     }
