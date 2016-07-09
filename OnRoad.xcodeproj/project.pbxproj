@@ -29,6 +29,8 @@
 		8FA646A61D1FFF65007B864D /* SaveJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA646A51D1FFF65007B864D /* SaveJsonModel.swift */; };
 		8FA646A81D200110007B864D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA646A71D200110007B864D /* SwiftyJSON.swift */; };
 		8FA646AA1D2025CF007B864D /* GetDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA646A91D2025CF007B864D /* GetDataModel.swift */; };
+		8FAB161D1D31473500B4BC77 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAB161C1D31473500B4BC77 /* DetailViewController.swift */; };
+		8FAB161F1D31477000B4BC77 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FAB161E1D31477000B4BC77 /* DetailViewController.xib */; };
 		8FB0B3AE1D2E95D20069FAEC /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0B3AD1D2E95D20069FAEC /* AlertHelper.swift */; };
 		8FB4A6421D1FF0C300D89926 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4A6411D1FF0C300D89926 /* SettingViewController.swift */; };
 		8FCB51EF1D253132006E4CBD /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51EE1D253132006E4CBD /* LeftMenuViewController.swift */; };
@@ -92,6 +94,8 @@
 		8FA646A51D1FFF65007B864D /* SaveJsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveJsonModel.swift; sourceTree = "<group>"; };
 		8FA646A71D200110007B864D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		8FA646A91D2025CF007B864D /* GetDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDataModel.swift; sourceTree = "<group>"; };
+		8FAB161C1D31473500B4BC77 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8FAB161E1D31477000B4BC77 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		8FB0B3AD1D2E95D20069FAEC /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		8FB4A6411D1FF0C300D89926 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8FCB51EE1D253132006E4CBD /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 		8F72AF441D23F496008CFFB0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8FAB161B1D31470900B4BC77 /* DetailViewController */,
 				8F1311981D1FDEB300805E4F /* ViewController.swift */,
 				8FB4A6411D1FF0C300D89926 /* SettingViewController.swift */,
 				8F72AF471D23F5C5008CFFB0 /* StreetViewController.swift */,
@@ -252,6 +257,15 @@
 				8F9E49831D2E81A200BAC96F /* RequestFormViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		8FAB161B1D31470900B4BC77 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8FAB161C1D31473500B4BC77 /* DetailViewController.swift */,
+				8FAB161E1D31477000B4BC77 /* DetailViewController.xib */,
+			);
+			name = DetailViewController;
 			sourceTree = "<group>";
 		};
 		CC40DCB4A1873F1DAFD9BAD4 /* Pods */ = {
@@ -382,6 +396,7 @@
 				8F1311A11D1FDEB300805E4F /* LaunchScreen.storyboard in Resources */,
 				8F13119E1D1FDEB300805E4F /* Assets.xcassets in Resources */,
 				8F13119C1D1FDEB300805E4F /* Main.storyboard in Resources */,
+				8FAB161F1D31477000B4BC77 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +546,7 @@
 			files = (
 				8FA646A61D1FFF65007B864D /* SaveJsonModel.swift in Sources */,
 				8FA646AA1D2025CF007B864D /* GetDataModel.swift in Sources */,
+				8FAB161D1D31473500B4BC77 /* DetailViewController.swift in Sources */,
 				8F3D95F91D21743800BA9EE6 /* CustomAnnotation.swift in Sources */,
 				8F72AF481D23F5C5008CFFB0 /* StreetViewController.swift in Sources */,
 				8FCB51EF1D253132006E4CBD /* LeftMenuViewController.swift in Sources */,

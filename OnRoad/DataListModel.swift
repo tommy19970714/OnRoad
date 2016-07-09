@@ -30,12 +30,6 @@ class DataListModel: NSObject {
         var tempTypes = types
         dataLists.removeAll()
         
-        //空の場合
-        if types.isEmpty
-        {
-            return
-        }
-        
         if let indexOpenData = tempTypes.indexOf(Types.opendata.rawValue)
         {
             tempTypes.removeAtIndex(indexOpenData)
@@ -62,7 +56,6 @@ class DataListModel: NSObject {
             placeApiModel.setTypeString([Types.restaurant.rawValue])
             placeApiModel.getPlaceData({result in
                 self.dataLists += result
-                
             })
         }
         
@@ -72,7 +65,6 @@ class DataListModel: NSObject {
             placeApiModel.setTypeString(tempTypes)
             placeApiModel.getPlaceData({result in
                 self.dataLists += result
-                
             })
         }
 

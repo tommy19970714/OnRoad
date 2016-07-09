@@ -84,12 +84,12 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         self.mapView.addSubview(centerPin)
         
         //buttonの設置
-        enterButton = UIButton(frame: CGRectMake(view.frame.width/2-100, view.frame.height-100, 200, 50))
+        enterButton = UIButton(frame: CGRectMake(0, view.frame.height-70, view.frame.width, 70))
         enterButton.layer.cornerRadius = 5.0
         enterButton.setTitle(message, forState: .Normal)
         enterButton.backgroundColor = Color.green
         enterButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        enterButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        enterButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
         enterButton.addTarget(self, action: #selector(RequestWorkViewController.onClickButton(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(enterButton)
         
