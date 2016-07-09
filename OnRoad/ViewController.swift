@@ -103,7 +103,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         sender.changeSw()
     }
     @IBAction func tappedButton2(sender: CustomUIButton) {
-        changeType(sender, type: Types.food.rawValue)
+        changeType(sender, type: Types.restaurant.rawValue)
         sender.changeSw()
     }
     @IBAction func tappedButton3(sender: CustomUIButton) {
@@ -111,6 +111,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         sender.changeSw()
     }
     @IBAction func tappedButton4(sender: CustomUIButton) {
+        changeType(sender, type: Types.workdata.rawValue)
         sender.changeSw()
     }
     @IBAction func tappedButton5(sender: CustomUIButton) {

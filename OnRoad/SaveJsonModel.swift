@@ -40,6 +40,7 @@ class SaveJsonModel: NSObject {
 
                             let geoPoint = NCMBGeoPoint(latitude: json[i]["geo:lat"].doubleValue, longitude: json[i]["geo:long"].doubleValue)
                             let title = json[i]["frameworx:operationName"].string
+                            let carType = json[i]["frameworx:carType"].string
                             
                             // クラスのNCMBObjectを作成
                             let obj2 = NCMBObject(className: "Opendata1")
@@ -48,6 +49,7 @@ class SaveJsonModel: NSObject {
                             obj2.setObject(start, forKey: "StartTime")
                             obj2.setObject(end, forKey: "EndTime")
                             obj2.setObject(title, forKey: "Title")
+                            obj2.setObject(carType, forKey: "carType")
                             // データストアへの保存を実施
                             obj2.saveEventually { (error: NSError!) -> Void in
                                 if error != nil {

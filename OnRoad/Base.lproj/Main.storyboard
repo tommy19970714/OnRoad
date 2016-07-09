@@ -125,7 +125,7 @@
         <!--Setting View Controller-->
         <scene sceneID="ULm-rS-phF">
             <objects>
-                <viewController id="osS-Qe-lkD" customClass="SettingViewController" customModule="OnRoad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="osS-Qe-lkD" customClass="SettingViewController" customModule="OnRoad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kof-Fz-tyx"/>
                         <viewControllerLayoutGuide type="bottom" id="eCh-6j-mn2"/>
@@ -186,11 +186,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Opendata_off" width="200" height="200"/>
-        <image name="ガソリンスタンド_off" width="200" height="200"/>
-        <image name="コンビニ_off" width="200" height="200"/>
-        <image name="パーキング_off" width="200" height="200"/>
-        <image name="仕事_off" width="200" height="200"/>
-        <image name="食事処_off" width="200" height="200"/>
+        <image name="Opendata_off" width="60" height="60"/>
+        <image name="ガソリンスタンド_off" width="60" height="60"/>
+        <image name="コンビニ_off" width="60" height="60"/>
+        <image name="パーキング_off" width="60" height="60"/>
+        <image name="仕事_off" width="60" height="60"/>
+        <image name="食事処_off" width="60" height="60"/>
     </resources>
 </document>

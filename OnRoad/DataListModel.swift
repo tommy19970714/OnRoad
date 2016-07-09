@@ -27,24 +27,49 @@ class DataListModel: NSObject {
     
     func update(region:MKCoordinateRegion,types:[String])
     {
+        var tempTypes = types
+        dataLists.removeAll()
+        
+        //空の場合
         if types.isEmpty
         {
-            dataLists.removeAll()
             return
         }
-        dataLists.removeAll()
-        if (types.indexOf(Types.opendata.rawValue) != nil)
+        
+        if let indexOpenData = tempTypes.indexOf(Types.opendata.rawValue)
         {
+            tempTypes.removeAtIndex(indexOpenData)
+            
             let getDataModel = GetDataModel(region: region)
             getDataModel.getOpenData({result in
                 self.dataLists += result
             })
         }
+        if let indexWorkData = tempTypes.indexOf(Types.workdata.rawValue)
+        {
+            tempTypes.removeAtIndex(indexWorkData)
+            
+            let getDataModel = GetDataModel(region: region)
+            getDataModel.getWorkData({result in
+                self.dataLists += result
+            })
+        }
+        if let indexRestaurantData = tempTypes.indexOf(Types.restaurant.rawValue)
+        {
+            tempTypes.removeAtIndex(indexRestaurantData)
+            
+            let placeApiModel = PlaceApiModel(region: region)
+            placeApiModel.setTypeString([Types.restaurant.rawValue])
+            placeApiModel.getPlaceData({result in
+                self.dataLists += result
+                
+            })
+        }
         
-        if (types.count != 1 || types[0] != Types.opendata.rawValue)
+        if !tempTypes.isEmpty
         {
             let placeApiModel = PlaceApiModel(region: region)
-            placeApiModel.setTypeString(types)
+            placeApiModel.setTypeString(tempTypes)
             placeApiModel.getPlaceData({result in
                 self.dataLists += result
                 
