@@ -34,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // ViewControllerを生成する.
         let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
-        let myFirstViewController : ViewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+        let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+//        let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("SettingViewController") as! SettingViewController
 
         let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
         let slideMenuController = SlideMenuController(mainViewController: myNavigationController, leftMenuViewController: LeftMenuViewController())

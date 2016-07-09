@@ -23,6 +23,8 @@ class PlaceApiModel: NSObject {
     var next_page_token:String?
     var count:Int = 0
     
+    let chengeParamDistance:CLLocationDistance = 200.0
+    
     init(region:MKCoordinateRegion)
     {
         let swGeoPoint = CLLocationCoordinate2D(latitude: region.center.latitude + (region.span.latitudeDelta/2), longitude: region.center.longitude + (region.span.longitudeDelta/2))
@@ -37,9 +39,18 @@ class PlaceApiModel: NSObject {
     
     func getPlaceData(callback: ([DataList]->()))
     {
-        
         let locationStr:String = stringLoaction(location!)
-        Alamofire.request(.GET, requestURL, parameters: ["key" : accessKey,"location": locationStr,"rankby":"distance", "types": type!])
+        //1500m以内なら，rankby=distanceに変更する 変更後をchengeParam = false
+        var customParam = "radius"
+        var customValue = String(distance)
+        if distance < chengeParamDistance
+        {
+            customParam = "rankby"
+            customValue = "distance"
+        }
+        print(distance)
+        
+        Alamofire.request(.GET, requestURL, parameters: ["key" : accessKey,"location": locationStr,customParam:customValue, "types": type!])
             .responseJSON {responce in
                 if responce.result.isSuccess {
                     let json: JSON = JSON(responce.result.value!)
@@ -58,14 +69,13 @@ class PlaceApiModel: NSObject {
                         dataList.location = coordinate
                         dataList.vicinity = json["results"][i]["vicinity"].string
                         var dataTypes:[String] = []
-                        print(json["results"][i]["types"])
+                        
                         for j in 0...json["results"][i]["types"].count-1
                         {
                             let myType = json["results"][i]["types"][j].string
                             dataTypes.append(myType!)
                             for k in 0...self.types.count-1
                             {
-                                print(json["results"][i]["types"][j].string)
                                 if self.types[k] == myType
                                 {
                                     dataList.type = myType!
@@ -118,7 +128,6 @@ class PlaceApiModel: NSObject {
                     let json: JSON = JSON(responce.result.value!)
                     var datalists:[DataList] = []
                     
-                    print(json)
                     for i in 0...json["results"].count
                     {
                         let dataList = DataList()

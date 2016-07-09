@@ -13,7 +13,7 @@ class DataList: NSObject {
     //共通
     var objectId:String?
     var title:String?
-    var location:CLLocationCoordinate2D?
+    var location:CLLocationCoordinate2D?//workdataではstartPoint
     var type:String?
     
     //opendata
@@ -29,6 +29,11 @@ class DataList: NSObject {
     var types:[String]?
     
     //workData
+    var endPoint:CLLocationCoordinate2D?
+    var text:String?
+    var userId:String?
+    var userName:String?
+    
     
     func getIntervalTime() -> String
     {

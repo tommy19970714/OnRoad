@@ -72,7 +72,7 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         //navigation bar
         if isFirst
         {
-            backbutton = UIBarButtonItem(image: UIImage(named: "menu"), style: .Plain, target: self, action: #selector(RequestWorkViewController.backHome(_:)))
+            backbutton = UIBarButtonItem(image: UIImage(named: "closemenu"), style: .Plain, target: self, action: #selector(RequestWorkViewController.backHome(_:)))
             self.navigationItem.leftBarButtonItem = backbutton
         }
         self.setupSearchBar()

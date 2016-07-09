@@ -11,13 +11,13 @@ import MapKit
 
 class SaveWorkDataModel: NSObject {
     
-    internal var tytle:String?
+    internal var title:String?
     internal var text:String?
     internal var startPoint:NCMBGeoPoint?
     internal var endPoint:NCMBGeoPoint?
     
     init(tytle:String,text:String,startPoint:CLLocationCoordinate2D,endPoint:CLLocationCoordinate2D) {
-        self.tytle = tytle
+        self.title = tytle
         self.text = text
         self.startPoint = NCMBGeoPoint(latitude: startPoint.latitude, longitude: startPoint.longitude)
         self.endPoint = NCMBGeoPoint(latitude: endPoint.latitude, longitude: endPoint.longitude)
@@ -35,7 +35,7 @@ class SaveWorkDataModel: NSObject {
         // オブジェクトに値を設定
         obj2.setObject(startPoint, forKey: "StartPoint")
         obj2.setObject(endPoint, forKey: "EndPoint")
-        obj2.setObject(tytle, forKey: "Tytle")
+        obj2.setObject(title, forKey: "Title")
         obj2.setObject(text, forKey: "Text")
         obj2.setObject(userId, forKey: "UserId")
         obj2.setObject(userName, forKey: "UserName")
