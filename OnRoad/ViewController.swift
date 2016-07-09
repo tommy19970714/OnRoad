@@ -181,11 +181,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             if myAnnotation == nil {
                 myAnnotation = MKAnnotationView(annotation: annotation, reuseIdentifier: myIdentifier)
                 
-                let buttonImage = UIImage(named: "3")
-                let arrowButton = UIButton()
-                arrowButton.frame = CGRectMake(0, 0, 40, 44)
-                arrowButton.setImage(buttonImage, forState: .Normal)
-                myAnnotation.rightCalloutAccessoryView = arrowButton as UIButton
+//                let buttonImage = UIImage(named: "3")
+//                let arrowButton = UIButton()
+//                arrowButton.frame = CGRectMake(0, 0, 40, 44)
+//                arrowButton.setImage(buttonImage, forState: .Normal)
+//                myAnnotation.rightCalloutAccessoryView = arrowButton as UIButton
                 myAnnotation.canShowCallout = true
             }
             
@@ -194,11 +194,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             myAnnotation.image = customAnnotation.image
             myAnnotation.annotation = annotation
             
-            let customCallout = CustomCalloutView(frame: CGRectMake(0,0,100,100))
-            let widthConstraint = NSLayoutConstraint(item: customCallout, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 100)
+            let customCallout = CustomCalloutView(frame: CGRectMake(0,0,400,35))
+            let widthConstraint = NSLayoutConstraint(item: customCallout, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 250)
             customCallout.addConstraint(widthConstraint)
             
-            let heightConstraint = NSLayoutConstraint(item: customCallout, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 100)
+            let heightConstraint = NSLayoutConstraint(item: customCallout, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 38)
             customCallout.addConstraint(heightConstraint)
             myAnnotation.detailCalloutAccessoryView = customCallout
 
