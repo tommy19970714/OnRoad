@@ -27,6 +27,7 @@ class DataList: NSObject {
     var placeId:String?
     var vicinity:String?
     var types:[String]?
+    var photoReference:String?
     
     //workData
     var endPoint:CLLocationCoordinate2D?

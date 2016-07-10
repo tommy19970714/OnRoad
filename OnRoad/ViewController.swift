@@ -71,10 +71,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
         button0.setIcon("Opendata")
-        button1.setIcon("パーキング")
+        button1.setIcon("仕事")
         button2.setIcon("食事処")
         button3.setIcon("ガソリンスタンド")
-        button4.setIcon("仕事")
+        button4.setIcon("パーキング")
         button5.setIcon("コンビニ")
         
         menubutton = UIBarButtonItem(image: UIImage(named: "menu"), style: .Plain, target: self, action: #selector(ViewController.clickMenu(_:)))
@@ -177,30 +177,33 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             var myAnnotation: MKAnnotationView!
             
+            let customAnnotation = annotation as! CustomAnnotaion
+            
             // annotationが見つからなかったら新しくannotationを生成.
             if myAnnotation == nil {
                 myAnnotation = MKAnnotationView(annotation: annotation, reuseIdentifier: myIdentifier)
                 
-//                let buttonImage = UIImage(named: "3")
-//                let arrowButton = UIButton()
-//                arrowButton.frame = CGRectMake(0, 0, 40, 44)
-//                arrowButton.setImage(buttonImage, forState: .Normal)
-//                myAnnotation.rightCalloutAccessoryView = arrowButton as UIButton
                 myAnnotation.canShowCallout = true
+                
+                let customCallout = CustomCalloutView(frame: CGRectMake(0,0,400,35))
+                customCallout.enterButton.addTarget(self, action: #selector(ViewController.clickDetailButton(_:)), forControlEvents: .TouchUpInside)
+                customCallout.enterButton.location = customAnnotation.coordinate
+                customCallout.enterButton.placeID = customAnnotation.placeId
+                customCallout.enterButton.photoReference = customAnnotation.photoReference
+                customCallout.enterButton.title = customAnnotation.title
+                customCallout.enterButton.vicinity = customAnnotation.vicinity
+                
+                let widthConstraint = NSLayoutConstraint(item: customCallout, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 250)
+                customCallout.addConstraint(widthConstraint)
+                
+                let heightConstraint = NSLayoutConstraint(item: customCallout, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 38)
+                customCallout.addConstraint(heightConstraint)
+                myAnnotation.detailCalloutAccessoryView = customCallout
             }
             
             // 画像を選択.
-            let customAnnotation = annotation as! CustomAnnotaion
             myAnnotation.image = customAnnotation.image
             myAnnotation.annotation = annotation
-            
-            let customCallout = CustomCalloutView(frame: CGRectMake(0,0,400,35))
-            let widthConstraint = NSLayoutConstraint(item: customCallout, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 250)
-            customCallout.addConstraint(widthConstraint)
-            
-            let heightConstraint = NSLayoutConstraint(item: customCallout, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 38)
-            customCallout.addConstraint(heightConstraint)
-            myAnnotation.detailCalloutAccessoryView = customCallout
 
             return myAnnotation
         }
@@ -208,12 +211,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     func mapView(mapView: MKMapView,annotationView view: MKAnnotationView,calloutAccessoryControlTapped control: UIControl)
     {
-        if control == view.rightCalloutAccessoryView
-        {
-            let streetViewController = StreetViewController()
-            streetViewController.location = view.annotation?.coordinate
-            self.navigationController!.pushViewController(streetViewController, animated: true)
-        }
         
     }
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -223,15 +220,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.dataLists = DataListModel.sharedInstance.getData()
             mapView.removeAnnotations(mapView.annotations)
             for data in dataLists{
-                    let annotation = CustomAnnotaion()
-                    annotation.coordinate = data.location!
-                    annotation.title = data.title
-                    annotation.subtitle = data.getIntervalTime()
-                    
-                    annotation.image = UIImage(named: data.type!)
-                    print(data.title)
-                    
-                    mapView.addAnnotation(annotation)
+                let annotation = CustomAnnotaion()
+                annotation.coordinate = data.location!
+                annotation.title = data.title
+                annotation.subtitle = data.getIntervalTime()
+                annotation.placeId = data.placeId
+                annotation.photoReference = data.photoReference
+                annotation.vicinity = data.vicinity
+                annotation.image = UIImage(named: data.type!)
+                print(data.title)
+                
+                mapView.addAnnotation(annotation)
             }
         }
     }
@@ -297,5 +296,19 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let nav = UINavigationController(rootViewController: requestWorkViewController)
         self.presentViewController(nav, animated: true, completion: nil)
     }
+    
+    func clickDetailButton(sender:UIButton)
+    {
+        let customDetailButtom = sender as! CustomDetailButton
+        
+        let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+        let detailViewController = stroBoardMain.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailViewController.location = customDetailButtom.location
+        detailViewController.placetitle = customDetailButtom.title
+        detailViewController.placeId = customDetailButtom.placeID
+        detailViewController.photoReference = customDetailButtom.photoReference
+        detailViewController.vicinity = customDetailButtom.vicinity
+        
+        self.navigationController!.pushViewController(detailViewController, animated: true)
+    }
 }
-

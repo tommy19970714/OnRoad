@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F05B5C61D32074800EDF712 /* CALayer+RuntimeAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F05B5C51D32074800EDF712 /* CALayer+RuntimeAttribute.swift */; };
+		8F05B5C81D320A1100EDF712 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F05B5C71D320A1100EDF712 /* DesignableButton.swift */; };
+		8F05B5CA1D32109B00EDF712 /* CustomDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F05B5C91D32109B00EDF712 /* CustomDetailButton.swift */; };
+		8F05B5CC1D3216B100EDF712 /* GetDetailPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F05B5CB1D3216B100EDF712 /* GetDetailPlaceModel.swift */; };
 		8F1311971D1FDEB300805E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1311961D1FDEB300805E4F /* AppDelegate.swift */; };
 		8F1311991D1FDEB300805E4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1311981D1FDEB300805E4F /* ViewController.swift */; };
 		8F13119C1D1FDEB300805E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F13119A1D1FDEB300805E4F /* Main.storyboard */; };
@@ -30,7 +34,6 @@
 		8FA646A81D200110007B864D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA646A71D200110007B864D /* SwiftyJSON.swift */; };
 		8FA646AA1D2025CF007B864D /* GetDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA646A91D2025CF007B864D /* GetDataModel.swift */; };
 		8FAB161D1D31473500B4BC77 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAB161C1D31473500B4BC77 /* DetailViewController.swift */; };
-		8FAB161F1D31477000B4BC77 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FAB161E1D31477000B4BC77 /* DetailViewController.xib */; };
 		8FB0B3AE1D2E95D20069FAEC /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0B3AD1D2E95D20069FAEC /* AlertHelper.swift */; };
 		8FB4A6421D1FF0C300D89926 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4A6411D1FF0C300D89926 /* SettingViewController.swift */; };
 		8FCB51EF1D253132006E4CBD /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51EE1D253132006E4CBD /* LeftMenuViewController.swift */; };
@@ -65,6 +68,10 @@
 		11C4334A30F8BB54C04752CB /* Pods-OnRoad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnRoad.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnRoad/Pods-OnRoad.release.xcconfig"; sourceTree = "<group>"; };
 		1395DE6F90C16C8B4C41DBEE /* Pods-OnRoadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnRoadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnRoadTests/Pods-OnRoadTests.release.xcconfig"; sourceTree = "<group>"; };
 		794A06D6DBF48DB5145E25CF /* Pods-OnRoadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnRoadTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnRoadTests/Pods-OnRoadTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8F05B5C51D32074800EDF712 /* CALayer+RuntimeAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+RuntimeAttribute.swift"; sourceTree = "<group>"; };
+		8F05B5C71D320A1100EDF712 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
+		8F05B5C91D32109B00EDF712 /* CustomDetailButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDetailButton.swift; sourceTree = "<group>"; };
+		8F05B5CB1D3216B100EDF712 /* GetDetailPlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDetailPlaceModel.swift; sourceTree = "<group>"; };
 		8F1311931D1FDEB300805E4F /* OnRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1311961D1FDEB300805E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F1311981D1FDEB300805E4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +102,6 @@
 		8FA646A71D200110007B864D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		8FA646A91D2025CF007B864D /* GetDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDataModel.swift; sourceTree = "<group>"; };
 		8FAB161C1D31473500B4BC77 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		8FAB161E1D31477000B4BC77 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		8FB0B3AD1D2E95D20069FAEC /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		8FB4A6411D1FF0C300D89926 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8FCB51EE1D253132006E4CBD /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +221,8 @@
 				8F9E497F1D2E61D500BAC96F /* Color.swift */,
 				8F9E49871D2E927100BAC96F /* UserDefaults.swift */,
 				8FB0B3AD1D2E95D20069FAEC /* AlertHelper.swift */,
+				8F05B5C51D32074800EDF712 /* CALayer+RuntimeAttribute.swift */,
+				8F05B5C71D320A1100EDF712 /* DesignableButton.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -232,6 +240,8 @@
 				8F802D991D2955C700893D90 /* Types.swift */,
 				8FE8744F1D2AB85A0064D901 /* CustomUIButton.swift */,
 				8F9E49851D2E901B00BAC96F /* SaveWorkDataModel.swift */,
+				8F05B5C91D32109B00EDF712 /* CustomDetailButton.swift */,
+				8F05B5CB1D3216B100EDF712 /* GetDetailPlaceModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -248,24 +258,15 @@
 		8F72AF441D23F496008CFFB0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8FAB161B1D31470900B4BC77 /* DetailViewController */,
 				8F1311981D1FDEB300805E4F /* ViewController.swift */,
 				8FB4A6411D1FF0C300D89926 /* SettingViewController.swift */,
 				8F72AF471D23F5C5008CFFB0 /* StreetViewController.swift */,
 				8FCB51EE1D253132006E4CBD /* LeftMenuViewController.swift */,
 				8F9E49811D2E68A600BAC96F /* RequestWorkViewController.swift */,
 				8F9E49831D2E81A200BAC96F /* RequestFormViewController.swift */,
+				8FAB161C1D31473500B4BC77 /* DetailViewController.swift */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		8FAB161B1D31470900B4BC77 /* DetailViewController */ = {
-			isa = PBXGroup;
-			children = (
-				8FAB161C1D31473500B4BC77 /* DetailViewController.swift */,
-				8FAB161E1D31477000B4BC77 /* DetailViewController.xib */,
-			);
-			name = DetailViewController;
 			sourceTree = "<group>";
 		};
 		CC40DCB4A1873F1DAFD9BAD4 /* Pods */ = {
@@ -396,7 +397,6 @@
 				8F1311A11D1FDEB300805E4F /* LaunchScreen.storyboard in Resources */,
 				8F13119E1D1FDEB300805E4F /* Assets.xcassets in Resources */,
 				8F13119C1D1FDEB300805E4F /* Main.storyboard in Resources */,
-				8FAB161F1D31477000B4BC77 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +552,8 @@
 				8FCB51EF1D253132006E4CBD /* LeftMenuViewController.swift in Sources */,
 				8F72AF461D23F544008CFFB0 /* UIViewController.swift in Sources */,
 				8F9E49821D2E68A600BAC96F /* RequestWorkViewController.swift in Sources */,
+				8F05B5CC1D3216B100EDF712 /* GetDetailPlaceModel.swift in Sources */,
+				8F05B5C81D320A1100EDF712 /* DesignableButton.swift in Sources */,
 				8F3F00AE1D202E3100BCC0DD /* DataList.swift in Sources */,
 				8F3D95FB1D2177DD00BA9EE6 /* CustomCalloutView.swift in Sources */,
 				8FCB51F31D2531E1006E4CBD /* User.swift in Sources */,
@@ -564,7 +566,9 @@
 				8F9E49801D2E61D500BAC96F /* Color.swift in Sources */,
 				8F1311971D1FDEB300805E4F /* AppDelegate.swift in Sources */,
 				8FA646A81D200110007B864D /* SwiftyJSON.swift in Sources */,
+				8F05B5CA1D32109B00EDF712 /* CustomDetailButton.swift in Sources */,
 				8FB4A6421D1FF0C300D89926 /* SettingViewController.swift in Sources */,
+				8F05B5C61D32074800EDF712 /* CALayer+RuntimeAttribute.swift in Sources */,
 				8F802D9A1D2955C700893D90 /* Types.swift in Sources */,
 				8FCB51F51D253719006E4CBD /* PlaceApiMdel.swift in Sources */,
 				8F9E49841D2E81A200BAC96F /* RequestFormViewController.swift in Sources */,

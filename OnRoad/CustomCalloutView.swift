@@ -11,26 +11,19 @@ import UIKit
 class CustomCalloutView: UIView {
     
     var image:UIImage?
-    var enterButton:UIButton!
+    var enterButton:CustomDetailButton!
     
     override init(frame: CGRect){
         super.init(frame: frame)
-//        
-//        let myImageView = UIImageView(frame:frame)
-//        myImageView.image = UIImage(named: "3")
-//        self.addSubview(myImageView)
-//        
-//        self.backgroundColor = UIColor.blackColor()
         
         //buttonの設置
-        enterButton = UIButton(frame: CGRectMake(5, 0, 220, 30))
+        enterButton = CustomDetailButton(frame: CGRectMake(5, 0, 220, 30))
         enterButton.layer.cornerRadius = 5.0
         enterButton.setTitle("詳細を確認する", forState: .Normal)
         enterButton.titleLabel?.font = UIFont.systemFontOfSize(15)
         enterButton.backgroundColor = Color.green
         enterButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         enterButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-//        enterButton.addTarget(self, action: #selector(RequestWorkViewController.onClickButton(_:)), forControlEvents: .TouchUpInside)
         self.addSubview(enterButton)
         
         
