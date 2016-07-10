@@ -99,7 +99,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         sender.changeSw()
     }
     @IBAction func tappedButton1(sender: CustomUIButton) {
-        changeType(sender, type: Types.parking.rawValue)
+        changeType(sender, type: Types.workdata.rawValue)
         sender.changeSw()
     }
     @IBAction func tappedButton2(sender: CustomUIButton) {
@@ -111,7 +111,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         sender.changeSw()
     }
     @IBAction func tappedButton4(sender: CustomUIButton) {
-        changeType(sender, type: Types.workdata.rawValue)
+        changeType(sender, type: Types.parking.rawValue)
         sender.changeSw()
     }
     @IBAction func tappedButton5(sender: CustomUIButton) {
