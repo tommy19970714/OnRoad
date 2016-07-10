@@ -56,7 +56,11 @@ class PlaceApiModel: NSObject {
                     let json: JSON = JSON(responce.result.value!)
                     var datalists:[DataList] = []
                     
-//                    print(json)
+                    print(json)
+                    if json["results"].count == 0
+                    {
+                        return
+                    }
                     for i in 0...json["results"].count-1
                     {
                         let dataList = DataList()
@@ -68,8 +72,9 @@ class PlaceApiModel: NSObject {
                         coordinate.longitude = json["results"][i]["geometry"]["location"]["lng"].doubleValue
                         dataList.location = coordinate
                         dataList.vicinity = json["results"][i]["vicinity"].string
-                        var dataTypes:[String] = []
+                        dataList.photoReference = json["results"][i]["photos"][0]["photo_reference"].string
                         
+                        var dataTypes:[String] = []
                         for j in 0...json["results"][i]["types"].count-1
                         {
                             let myType = json["results"][i]["types"][j].string
@@ -84,88 +89,14 @@ class PlaceApiModel: NSObject {
                         }
                         dataList.types = dataTypes
                         
-//                        if dataList.type != nil
-//                        {
-                            datalists.append(dataList)
-//                        }
+                        datalists.append(dataList)
                     }
-//                    if json["next_page_token"].string == nil
-//                    {
-//                        callback(datalists)
-//                    }
-//                    else
-//                    {
-//                        self.next_page_token = json["next_page_token"].string
-//                        self.getNextData({result in
-//                            
-//                            if !result.isEmpty
-//                            {
-//                                for r in result
-//                                {
-//                                    datalists.append(r)
-//                                }
-//                            }
-//                            callback(datalists)
-//                        })
-//                    }
                     
                     callback(datalists)
                 }
         }
     }
     
-    func getNextData(callback: ([DataList]->()))
-    {
-        count += 1
-        if count > 4
-        {
-            return
-        }
-        Alamofire.request(.GET, requestURL, parameters: ["key" : accessKey,"next_page_token": next_page_token!])
-            .responseJSON {responce in
-                if responce.result.isSuccess {
-                    
-                    let json: JSON = JSON(responce.result.value!)
-                    var datalists:[DataList] = []
-                    
-                    for i in 0...json["results"].count
-                    {
-                        let dataList = DataList()
-                        dataList.objectId = json["results"][i]["id"].string
-                        dataList.placeId = json["results"][i]["place_id"].string
-                        dataList.title = json["results"][i]["name"].string
-                        var coordinate = CLLocationCoordinate2D()
-                        coordinate.latitude = json["results"][i]["geometry"]["location"]["lat"].doubleValue
-                        coordinate.longitude = json["results"][i]["geometry"]["location"]["lng"].doubleValue
-                        dataList.location = coordinate
-                        dataList.vicinity = json["results"][i]["vicinity"].string
-                        dataList.type = self.type
-                        
-                        datalists.append(dataList)
-                    }
-                    
-                    if json["next_page_token"].string == nil
-                    {
-                        callback(datalists)
-                    }
-                    else
-                    {
-                        self.next_page_token = json["next_page_token"].string
-                        self.getNextData({result in
-                            
-                            if !result.isEmpty
-                            {
-                                for r in result
-                                {
-                                    datalists.append(r)
-                                }
-                            }
-                            callback(datalists)
-                        })
-                    }
-                }
-        }
-    }
     
     func stringLoaction(coordinate:CLLocationCoordinate2D) -> String
     {

@@ -10,7 +10,7 @@ import Foundation
 
 class CustomUIButton: UIButton {
     private var sw:Bool = false
-    private let offalpha:CGFloat = 0.85
+    private let offalpha:CGFloat = 1
     internal var imageName:String?
     
     func setIcon(imageName:String)
