@@ -31,17 +31,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //navigationbar
         UINavigationBar.appearance().barTintColor = Color.green
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.00)]
         
         // ViewControllerを生成する.
         let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
-        let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
-//        let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("SettingViewController") as! SettingViewController
-
-        let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
-        let slideMenuController = SlideMenuController(mainViewController: myNavigationController, leftMenuViewController: LeftMenuViewController())
-        let controller = slideMenuController
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = controller
+        
+        if UserDefaults.userId == "aaa"
+        {
+            let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+            //        let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("SettingViewController") as! SettingViewController
+            
+            let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
+            let slideMenuController = SlideMenuController(mainViewController: myNavigationController, leftMenuViewController: LeftMenuViewController())
+            let controller = slideMenuController
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = controller
+        }
+        else
+        {
+            let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("FirstViewController") as! FirstViewController
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = myFirstViewController
+        }
         self.window?.makeKeyAndVisible()
         
         UserDefaults.userId = "vdhsaknjavs"

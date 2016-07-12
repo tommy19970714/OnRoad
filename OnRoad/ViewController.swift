@@ -131,6 +131,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             types.append(type)
         }
         print(types)
+        DataListModel.sharedInstance.update(mapView.region, types: types)
     }
     
     func clickMenu(sender:UIButton)
@@ -207,10 +208,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
     }
-    func mapView(mapView: MKMapView,annotationView view: MKAnnotationView,calloutAccessoryControlTapped control: UIControl)
-    {
-        
-    }
+
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if keyPath == "dataLists"{
