@@ -20,8 +20,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var parkButton: UIButton!
     @IBOutlet weak var streetButton: UIButton!
     
-    var location:CLLocationCoordinate2D!
-    var placeId:String!
+    var location:CLLocationCoordinate2D?
+    var placeId:String?
     var photoReference:String?
     var placetitle: String?
     var vicinity:String?

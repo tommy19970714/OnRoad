@@ -188,11 +188,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 
                 let customCallout = CustomCalloutView(frame: CGRectMake(0,0,400,35))
                 customCallout.enterButton.addTarget(self, action: #selector(ViewController.clickDetailButton(_:)), forControlEvents: .TouchUpInside)
-                customCallout.enterButton.location = customAnnotation.coordinate
-                customCallout.enterButton.placeID = customAnnotation.placeId
-                customCallout.enterButton.photoReference = customAnnotation.photoReference
-                customCallout.enterButton.title = customAnnotation.title
-                customCallout.enterButton.vicinity = customAnnotation.vicinity
+                //値の受け渡し
+                customCallout.enterButton.dataList = customAnnotation.dataList
                 
                 let widthConstraint = NSLayoutConstraint(item: customCallout, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 250)
                 customCallout.addConstraint(widthConstraint)
@@ -225,9 +222,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 annotation.coordinate = data.location!
                 annotation.title = data.title
                 annotation.subtitle = data.getIntervalTime()
-                annotation.placeId = data.placeId
-                annotation.photoReference = data.photoReference
-                annotation.vicinity = data.vicinity
+                annotation.dataList = data
                 annotation.image = UIImage(named: data.type!)
                 print(data.title)
                 
@@ -309,14 +304,32 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     {
         let customDetailButtom = sender as! CustomDetailButton
         
-        let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
-        let detailViewController = stroBoardMain.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        detailViewController.location = customDetailButtom.location
-        detailViewController.placetitle = customDetailButtom.title
-        detailViewController.placeId = customDetailButtom.placeID
-        detailViewController.photoReference = customDetailButtom.photoReference
-        detailViewController.vicinity = customDetailButtom.vicinity
-        
-        self.navigationController!.pushViewController(detailViewController, animated: true)
+        if customDetailButtom.dataList?.type == Types.workdata.rawValue
+        {
+            let detailWorkViewController = DetailWorkViewController()
+            detailWorkViewController.objectId = customDetailButtom.dataList?.objectId
+            detailWorkViewController.firstText = customDetailButtom.dataList?.text
+            detailWorkViewController.firstTitle = customDetailButtom.dataList?.title
+            self.navigationController!.pushViewController(detailWorkViewController, animated: true)
+        }
+        else if customDetailButtom.dataList?.type == Types.opendata.rawValue
+        {
+            let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+            let detailViewController = stroBoardMain.instantiateViewControllerWithIdentifier("DetailOpenDataViewController") as! DetailOpenDataViewController
+            detailViewController.dataList = customDetailButtom.dataList
+            self.navigationController!.pushViewController(detailViewController, animated: true)
+        }
+        else
+        {
+            let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+            let detailViewController = stroBoardMain.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+            detailViewController.location = customDetailButtom.dataList!.location
+            detailViewController.placetitle = customDetailButtom.dataList!.title
+            detailViewController.placeId = customDetailButtom.dataList!.placeId
+            detailViewController.photoReference = customDetailButtom.dataList!.photoReference
+            detailViewController.vicinity = customDetailButtom.dataList!.vicinity
+            
+            self.navigationController!.pushViewController(detailViewController, animated: true)
+        }
     }
 }

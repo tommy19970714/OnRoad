@@ -12,7 +12,7 @@ import MapKit
 class CustomAnnotaion: MKPointAnnotation {
     
     var image:UIImage?
-    var placeId:String?
-    var photoReference:String?
-    var vicinity:String?
+    
+    var dataList:DataList?
+
 }
