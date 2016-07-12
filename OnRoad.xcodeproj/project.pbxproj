@@ -43,6 +43,9 @@
 		8FCB51F11D25318A006E4CBD /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F01D25318A006E4CBD /* ProfileCell.swift */; };
 		8FCB51F31D2531E1006E4CBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F21D2531E1006E4CBD /* User.swift */; };
 		8FCB51F51D253719006E4CBD /* PlaceApiMdel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */; };
+		8FDC02231D35405A00F94146 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC02221D35405A00F94146 /* FirstViewController.swift */; };
+		8FDC02251D3540CE00F94146 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC02241D3540CE00F94146 /* SignupViewController.swift */; };
+		8FDC02271D35410900F94146 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC02261D35410900F94146 /* LoginViewController.swift */; };
 		8FE874501D2AB85A0064D901 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE8744F1D2AB85A0064D901 /* CustomUIButton.swift */; };
 		C370020ADB3E64D018218F49 /* Pods_OnRoad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D6BC8A4C2792098E32285D /* Pods_OnRoad.framework */; };
 		D192CE37C69905E30B33F53F /* Pods_OnRoadTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B55D6A534FAD105C84DF6E8 /* Pods_OnRoadTests.framework */; };
@@ -114,6 +117,9 @@
 		8FCB51F01D25318A006E4CBD /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		8FCB51F21D2531E1006E4CBD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceApiMdel.swift; sourceTree = "<group>"; };
+		8FDC02221D35405A00F94146 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		8FDC02241D3540CE00F94146 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		8FDC02261D35410900F94146 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8FE8744F1D2AB85A0064D901 /* CustomUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
 		A6CD3DAD302D7FB8627D2B2E /* Pods-OnRoadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnRoadUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnRoadUITests/Pods-OnRoadUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF3B18F547F50B032A144CC9 /* Pods-OnRoadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnRoadUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnRoadUITests/Pods-OnRoadUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +280,9 @@
 				8F07A1801D330D040051916D /* WorkListViewController.swift */,
 				8FBDF1241D3491A9004DF990 /* DetailWorkViewController.swift */,
 				8FBDF1261D349698004DF990 /* DetailOpenDataViewController.swift */,
+				8FDC02221D35405A00F94146 /* FirstViewController.swift */,
+				8FDC02241D3540CE00F94146 /* SignupViewController.swift */,
+				8FDC02261D35410900F94146 /* LoginViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -574,12 +583,15 @@
 				8F9E49861D2E901B00BAC96F /* WorkDataModel.swift in Sources */,
 				8F52370C1D215AC9008984F2 /* DataListModel.swift in Sources */,
 				8F9E49881D2E927100BAC96F /* UserDefaults.swift in Sources */,
+				8FDC02231D35405A00F94146 /* FirstViewController.swift in Sources */,
 				8F9E49801D2E61D500BAC96F /* Color.swift in Sources */,
 				8FBDF1251D3491A9004DF990 /* DetailWorkViewController.swift in Sources */,
 				8F1311971D1FDEB300805E4F /* AppDelegate.swift in Sources */,
 				8FA646A81D200110007B864D /* SwiftyJSON.swift in Sources */,
 				8F05B5CA1D32109B00EDF712 /* CustomDetailButton.swift in Sources */,
 				8FB4A6421D1FF0C300D89926 /* SettingViewController.swift in Sources */,
+				8FDC02271D35410900F94146 /* LoginViewController.swift in Sources */,
+				8FDC02251D3540CE00F94146 /* SignupViewController.swift in Sources */,
 				8F05B5C61D32074800EDF712 /* CALayer+RuntimeAttribute.swift in Sources */,
 				8F802D9A1D2955C700893D90 /* Types.swift in Sources */,
 				8FCB51F51D253719006E4CBD /* PlaceApiMdel.swift in Sources */,
