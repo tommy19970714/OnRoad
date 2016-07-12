@@ -11,9 +11,5 @@ import MapKit
 
 class CustomDetailButton: UIButton {
     
-    var location:CLLocationCoordinate2D?
-    var placeID:String?
-    var photoReference:String?
-    var title:String?
-    var vicinity:String?
+    var dataList:DataList?
 }
