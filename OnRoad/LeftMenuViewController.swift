@@ -95,9 +95,9 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
         else if indexPath.section == 2
         {
             self.slideMenuController()?.closeLeft()
-            //
-            //            let notification : NSNotification = NSNotification(name: "segueSearchView", object: self, userInfo: nil)
-            //            NSNotificationCenter.defaultCenter().postNotification(notification)
+
+            let notification : NSNotification = NSNotification(name: "segueWorkListView", object: self, userInfo: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
         }
         else if indexPath.section == 3
         {
