@@ -81,6 +81,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationItem.leftBarButtonItem = menubutton
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.segueRequestWorkView(_:)), name: "segueRequestWorkView", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.segueWorkListView(_:)), name: "segueWorkListView", object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -294,6 +295,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let requestWorkViewController = RequestWorkViewController()
         requestWorkViewController.message = "ここで荷物を積む"
         let nav = UINavigationController(rootViewController: requestWorkViewController)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    func segueWorkListView(sender:NSNotification)
+    {
+        let workListViewController = WorkListViewController()
+        let nav = UINavigationController(rootViewController: workListViewController)
         self.presentViewController(nav, animated: true, completion: nil)
     }
     

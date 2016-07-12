@@ -42,9 +42,12 @@ class DetailViewController: UIViewController {
                 self.timeLabel.text = opentime
             }
         })
+        if photoReference != nil
+        {
+            let url = detailModel.getImage(photoReference!)
+            imageView.sd_setImageWithURL(NSURL(string:url))
+        }
         
-        let url = detailModel.getImage(photoReference!)
-        imageView.sd_setImageWithURL(NSURL(string:url))
     }
     
     func clickStreetView(sender:UIButton)

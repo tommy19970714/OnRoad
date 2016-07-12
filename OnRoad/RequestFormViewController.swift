@@ -18,7 +18,10 @@ class RequestFormViewController: UIViewController,UITextViewDelegate, UITextFiel
     
     var decideButton:UIBarButtonItem!
     
-    let firstText = "要件:\n\n期間:\n\n金額:\n\n連絡先:\n\n"
+    var firstText:String? = "要件:\n\n期間:\n\n金額:\n\n連絡先:\n\n"
+    var firstTitle:String? = "タイトル"
+    
+    var objectId:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class RequestFormViewController: UIViewController,UITextViewDelegate, UITextFiel
         
         //textField
         textField = UITextField(frame: CGRectMake(0, 0, view.frame.width-15, 45))
+        textField.text = firstTitle
         textField.placeholder = "タイトル"
         textField.font = UIFont.systemFontOfSize(CGFloat(20))
         textField.textColor = UIColor.blackColor()
@@ -67,8 +71,9 @@ class RequestFormViewController: UIViewController,UITextViewDelegate, UITextFiel
             }
             return
         }
-        let saveWorkDataModel = SaveWorkDataModel(tytle: textField.text!,text: textView.text, startPoint: startLocation, endPoint: endLocation)
-        saveWorkDataModel.save({(error: NSError?) -> Void in
+        let workDataModel = WorkDataModel()
+        workDataModel.setParam(textField.text!,text: textView.text, startPoint: startLocation, endPoint: endLocation,objectId: objectId)
+        workDataModel.save({(error: NSError?) -> Void in
             
             var message:String?
             if error == nil {
