@@ -56,4 +56,14 @@ class AlertHelper: NSObject {
         // アラート表示
         parent.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    class func showOkAlert (title: String?, message: String?, parent: UIViewController) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: { (action:UIAlertAction) -> Void in
+        })
+        alertController.addAction(okAction)
+        
+        parent.presentViewController(alertController, animated: true, completion: nil)
+    }
 }

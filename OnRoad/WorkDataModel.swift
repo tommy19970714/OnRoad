@@ -70,11 +70,9 @@ class WorkDataModel: NSObject {
         
         query.findObjectsInBackgroundWithBlock({(objects, error) in
             if error != nil {
-                // 保存に失敗した場合の処理
                 print("error")
                 
             }else{
-                // 保存に成功した場合の処理
                 print(objects)
                 
                 var dataLists:[DataList] = []

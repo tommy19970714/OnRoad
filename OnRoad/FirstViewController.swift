@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SlideMenuControllerSwift
 
 class FirstViewController: UIViewController{
     
@@ -16,7 +16,9 @@ class FirstViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.segueHome(_:)), name: "Login", object: nil)
+
         
     }
     override func didReceiveMemoryWarning() {
@@ -36,5 +38,17 @@ class FirstViewController: UIViewController{
         let nav = UINavigationController(rootViewController: signupViewController)
         self.presentViewController(nav, animated: true, completion: nil)
         
+    }
+    
+    func segueHome(sender:NSNotification)
+    {
+        let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+        
+        let myNavigationController: UINavigationController = UINavigationController(rootViewController: viewController)
+        let slideMenuController = SlideMenuController(mainViewController: myNavigationController, leftMenuViewController: LeftMenuViewController())
+        let controller = slideMenuController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
     }
 }
