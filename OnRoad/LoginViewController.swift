@@ -34,7 +34,10 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
     }
     
     @IBAction func clickLogin(sender: UIButton) {
-        
+        if checkField()
+        {
+            login()
+        }
     }
     func backHome(sender:UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)

@@ -19,7 +19,6 @@ class FirstViewController: UIViewController{
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.segueHome(_:)), name: "Login", object: nil)
 
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
