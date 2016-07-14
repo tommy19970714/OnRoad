@@ -24,7 +24,7 @@ class DetailOpenDataViewController: UIViewController {
         super.viewDidLoad()
         
         titleLabel.text = dataList?.title
-        timeLabel.text = dataList?.getIntervalTime()
+        timeLabel.text = dataList!.getIntervalTime()
         carTypeLabel.text = dataList?.carType
         supportedLabel.text = "提供元:\n株式会社フレームワークス"
         

@@ -58,7 +58,7 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
                 break
             case .NotDetermined:
                 // iOS8での位置情報追跡リクエストの方法
-                if ((locationManager?.respondsToSelector("requestWhenInUseAuthorization")) != nil){
+                if ((locationManager?.respondsToSelector(#selector(CLLocationManager.requestWhenInUseAuthorization))) != nil){
                     locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
                     locationManager?.requestWhenInUseAuthorization()
                     locationManager?.startUpdatingLocation()
@@ -227,7 +227,14 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         self.searchBar.showsCancelButton = true
         self.navigationItem.leftBarButtonItem = nil
         self.searchTableView.hidden = false
-        self.searchTableView.reloadData()
+        if searchBar.text != nil
+        {
+            placeAutocomplete(searchBar.text!)
+        }
+        else
+        {
+            searchTableView.reloadData()
+        }
         return true
     }
     
@@ -308,11 +315,7 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
                 print("地名無し")
             }
             else if response!.mapItems.count > 0 {
-                for item in response!.mapItems {
-                    
-                    // 検索結果の内名前を出力.
-                    print(item.name)
-                }
+                
                 self.searchItem = response!.mapItems
                 self.searchTableView.reloadData()
             }

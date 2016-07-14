@@ -42,7 +42,7 @@ class DataList: NSObject {
             return "?分"
         }
         let span = endTime!.timeIntervalSinceDate(startTime!)
-        let daySpan = span/60
+        let daySpan = round(span/60)
         
         return String(daySpan)+"分"
     }
