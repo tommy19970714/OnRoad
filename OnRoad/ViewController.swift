@@ -11,7 +11,7 @@ import GoogleMaps
 import MapKit
 import SlideMenuControllerSwift
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate{
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource{
     
     //reviewのURL
     let itunesURL:String = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1134663266"
@@ -35,6 +35,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var button4: CustomUIButton!
     @IBOutlet weak var button5: CustomUIButton!
     @IBOutlet weak var button6: CustomUIButton!
+    
+    var searchTableView:UITableView!
+    var searchItem:[MKMapItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +96,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.signout(_:)), name: "signout", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.postComment(_:)), name: "postComment", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.segueCommentListView(_:)), name: "segueCommentListView", object: nil)
+        
+        
+        //tableviewの生成
+        let h = (self.navigationController?.navigationBar.frame.size.height)! + UIApplication.sharedApplication().statusBarFrame.height
+        searchTableView = UITableView(frame: CGRect(x: 0, y: h, width: view.frame.width, height: view.frame.height*2/3))
+        searchTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        searchTableView.dataSource = self
+        searchTableView.delegate = self
+        searchTableView.hidden = true
+        self.view.addSubview(searchTableView)
 
     }
     
@@ -261,17 +274,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.searchBar = searchBar
         }
     }
-    
     //テキストが変更される毎に呼ばれる
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-
         
+        placeAutocomplete(searchText)
     }
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
         self.searchBar.showsCancelButton = true
         self.navigationItem.leftBarButtonItem = nil
-        
+        self.searchTableView.hidden = false
+        self.searchTableView.reloadData()
         return true
     }
     
@@ -279,13 +292,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.searchBar.showsCancelButton = false
         self.navigationItem.leftBarButtonItem = menubutton
         self.searchBar.resignFirstResponder()
-        
+        self.searchTableView.hidden = true
         return true
     }
     
     // Cancelボタンが押された時に呼ばれる
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        
+        self.searchTableView.hidden = true
+        self.searchItem = []
+        self.searchTableView.reloadData()
         self.searchBar.resignFirstResponder()
     }
     
@@ -293,6 +308,72 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
         self.view.endEditing(true)
+        if(self.searchItem.count >= 1)
+        {
+            mapView.setCenterCoordinate(self.searchItem[0].placemark.coordinate , animated: true)
+            searchTableView.hidden = true
+            searchTableView.reloadData()
+        }
+        
+    }
+    
+    /*
+     Cellが選択された際に呼び出されるデリゲートメソッド.
+     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        mapView.setCenterCoordinate(self.searchItem[indexPath.row].placemark.coordinate , animated: true)
+        searchTableView.hidden = true
+        searchItem = []
+        searchTableView.reloadData()
+        self.searchBar.resignFirstResponder()
+        self.view.endEditing(true)
+    }
+    
+    /*
+     Cellの総数を返すデータソースメソッド.
+     (実装必須)
+     */
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchItem.count
+    }
+    
+    /*
+     Cellに値を設定するデータソースメソッド.
+     (実装必須)
+     */
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        // 再利用するCellを取得する.
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        
+        // Cellに値を設定する.
+        cell.textLabel!.text = searchItem[indexPath.row].name
+        
+        return cell
+    }
+    func placeAutocomplete(str:String) {
+        
+        let myRequest: MKLocalSearchRequest = MKLocalSearchRequest()
+        myRequest.region = mapView.region
+        myRequest.naturalLanguageQuery = str
+        let mySearch: MKLocalSearch = MKLocalSearch(request: myRequest)
+        
+        // 検索開始.
+        mySearch.startWithCompletionHandler { (response, error) -> Void in
+            
+            if error != nil {
+                print("地名無し")
+            }
+            else if response!.mapItems.count > 0 {
+                for item in response!.mapItems {
+                    
+                    // 検索結果の内名前を出力.
+                    print(item.name)
+                }
+                self.searchItem = response!.mapItems
+                self.searchTableView.reloadData()
+            }
+        }
     }
 
     
