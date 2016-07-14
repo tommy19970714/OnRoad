@@ -13,6 +13,10 @@ import SlideMenuControllerSwift
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate{
     
+    //reviewのURL
+    let itunesURL:String = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1134663266"
+    //忘れない！
+    
     @IBOutlet weak var mapView: MKMapView!
     var searchBar: UISearchBar!
     var menubutton: UIBarButtonItem!
@@ -85,6 +89,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.segueRequestWorkView(_:)), name: "segueRequestWorkView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.segueWorkListView(_:)), name: "segueWorkListView", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.review(_:)), name: "review", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.signout(_:)), name: "signout", object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -303,6 +309,37 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let workListViewController = WorkListViewController()
         let nav = UINavigationController(rootViewController: workListViewController)
         self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    func review(sender:NSNotification) {
+        let url = NSURL(string:itunesURL)
+        let app:UIApplication = UIApplication.sharedApplication()
+        app.openURL(url!)
+    }
+    
+    func signout(sender:NSNotification) {
+        
+        AlertHelper.showAlert("サインアウト", message: "本当にサインアウトしますか？", cancel: "キャンセル", destructive: nil, others: ["OK"], parent: self) {
+            (buttonIndex: Int) in
+            // 押されたボタンのインデックスにて処理を振り分ける
+            switch buttonIndex {
+            case 1 :
+                // OK
+                let ud3 = NSUserDefaults.standardUserDefaults()
+                ud3.removeObjectForKey("userId")
+                ud3.removeObjectForKey("userName")
+                ud3.removeObjectForKey("mail")
+                
+                let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = stroBoardMain.instantiateViewControllerWithIdentifier("FirstViewController") as! FirstViewController
+                
+                self.presentViewController(viewController, animated: true, completion: nil)
+                break
+            default :
+                // キャンセル
+                break
+            }
+        }
     }
     
     func clickDetailButton(sender:UIButton)

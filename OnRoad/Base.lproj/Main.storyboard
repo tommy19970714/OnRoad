@@ -589,50 +589,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FirstTableCell" id="kCB-wg-HxP">
-                                        <rect key="frame" x="0.0" y="135" width="600" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kCB-wg-HxP" id="YPG-eS-Heh">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="電話番号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEM-MY-Pp1">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="49.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="mEM-MY-Pp1" firstAttribute="top" secondItem="YPG-eS-Heh" secondAttribute="topMargin" constant="-8" id="3N6-1a-lwm"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="mEM-MY-Pp1" secondAttribute="bottom" constant="-8" id="6Em-d1-sLV"/>
-                                                <constraint firstItem="mEM-MY-Pp1" firstAttribute="leading" secondItem="YPG-eS-Heh" secondAttribute="leadingMargin" id="6NE-QE-Dsg"/>
-                                                <constraint firstItem="mEM-MY-Pp1" firstAttribute="trailing" secondItem="YPG-eS-Heh" secondAttribute="trailingMargin" id="nca-oK-Ogu"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FirstTableCell" id="eZR-qv-rFi">
-                                        <rect key="frame" x="0.0" y="185" width="600" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZR-qv-rFi" id="euU-Oa-Myp">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="普通車" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bRe-no-sUe">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="49.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="bRe-no-sUe" secondAttribute="bottom" constant="-8" id="22J-se-oa8"/>
-                                                <constraint firstItem="bRe-no-sUe" firstAttribute="trailing" secondItem="euU-Oa-Myp" secondAttribute="trailingMargin" id="eQO-ik-qOc"/>
-                                                <constraint firstItem="bRe-no-sUe" firstAttribute="top" secondItem="euU-Oa-Myp" secondAttribute="topMargin" constant="-8" id="isG-Dk-4ON"/>
-                                                <constraint firstItem="bRe-no-sUe" firstAttribute="leading" secondItem="euU-Oa-Myp" secondAttribute="leadingMargin" id="rqA-nb-NSp"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FirstTableCell" id="jCZ-np-KDB">
-                                        <rect key="frame" x="0.0" y="235" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="135" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jCZ-np-KDB" id="w6B-HR-41h">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
@@ -652,16 +610,67 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" focusStyle="custom" id="kIO-Kf-j0D">
-                                        <rect key="frame" x="0.0" y="285" width="600" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" focusStyle="custom" rowHeight="64" id="kIO-Kf-j0D">
+                                        <rect key="frame" x="0.0" y="185" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kIO-Kf-j0D" id="Oco-dj-bGT">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="登録をタップすると," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnT-ZA-eoc">
+                                                    <rect key="frame" x="146" y="12" width="120" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYH-3l-Z2p">
+                                                    <rect key="frame" x="267" y="7" width="60" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="利用規約"/>
+                                                    <connections>
+                                                        <action selector="readRule:" destination="CjM-Iw-zSx" eventType="touchUpInside" id="iwd-eT-KUc"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuN-Lp-N9c">
+                                                    <rect key="frame" x="362" y="8" width="120" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="プライバシーポリシー"/>
+                                                    <connections>
+                                                        <action selector="readPrivacyPolicy:" destination="CjM-Iw-zSx" eventType="touchUpInside" id="S8R-Ah-slw"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="と" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCe-uw-jsp">
+                                                    <rect key="frame" x="336" y="12" width="18" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="に同意したものとします．" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAz-gX-Kgr">
+                                                    <rect key="frame" x="148.5" y="35.5" width="303" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="303" id="C0D-bx-bmz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LAz-gX-Kgr" firstAttribute="centerX" secondItem="Oco-dj-bGT" secondAttribute="centerX" id="24U-lm-yTv"/>
+                                                <constraint firstItem="AnT-ZA-eoc" firstAttribute="top" secondItem="Oco-dj-bGT" secondAttribute="topMargin" constant="6" id="82j-7m-zGf"/>
+                                                <constraint firstItem="gYH-3l-Z2p" firstAttribute="top" secondItem="Oco-dj-bGT" secondAttribute="topMargin" constant="-1" id="CnY-M6-Cdj"/>
+                                                <constraint firstItem="MuN-Lp-N9c" firstAttribute="leading" secondItem="yCe-uw-jsp" secondAttribute="trailing" constant="3" id="GtA-uH-GWo"/>
+                                                <constraint firstItem="gYH-3l-Z2p" firstAttribute="leading" secondItem="AnT-ZA-eoc" secondAttribute="trailing" constant="5" id="Iop-V9-FqZ"/>
+                                                <constraint firstItem="MuN-Lp-N9c" firstAttribute="top" secondItem="Oco-dj-bGT" secondAttribute="topMargin" constant="-1" id="SEX-nt-Xt7"/>
+                                                <constraint firstItem="yCe-uw-jsp" firstAttribute="leading" secondItem="gYH-3l-Z2p" secondAttribute="trailing" constant="3" id="Zyn-68-Peg"/>
+                                                <constraint firstItem="gYH-3l-Z2p" firstAttribute="centerX" secondItem="Oco-dj-bGT" secondAttribute="centerX" constant="-10" id="lk3-fS-GSK"/>
+                                                <constraint firstItem="LAz-gX-Kgr" firstAttribute="top" secondItem="yCe-uw-jsp" secondAttribute="bottom" constant="7" id="n2g-gg-u9f"/>
+                                                <constraint firstItem="yCe-uw-jsp" firstAttribute="top" secondItem="Oco-dj-bGT" secondAttribute="topMargin" constant="6" id="tqT-b9-gEv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FirstTableCell" id="l1Z-e9-mGV">
-                                        <rect key="frame" x="0.0" y="335" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="249" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l1Z-e9-mGV" id="Tor-q3-130">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
@@ -671,7 +680,7 @@
                                                     <rect key="frame" x="8" y="-1" width="584" height="49.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <state key="normal" title="登録">
-                                                        <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="clickSignup:" destination="CjM-Iw-zSx" eventType="touchUpInside" id="btk-VP-Tcd"/>
@@ -695,10 +704,8 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LUT-zD-VEA"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="carField" destination="bRe-no-sUe" id="RcM-yP-ZjX"/>
                         <outlet property="mailField" destination="1eH-d8-nS5" id="wKn-7e-JsA"/>
                         <outlet property="passwordField" destination="cWH-Cl-xag" id="WTs-bA-WrN"/>
-                        <outlet property="phoneField" destination="mEM-MY-Pp1" id="j5B-mM-8tS"/>
                         <outlet property="usernameField" destination="Lio-o4-cTl" id="wue-hF-TtM"/>
                     </connections>
                 </tableViewController>
@@ -770,7 +777,7 @@
                                                     <rect key="frame" x="8" y="-1" width="584" height="49.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <state key="normal" title="ログイン">
-                                                        <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="clickLogin:" destination="mGE-Gr-iih" eventType="touchUpInside" id="2hQ-RG-dDb"/>

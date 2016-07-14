@@ -13,8 +13,8 @@ class UserModel: NSObject {
     
     var userName:String?
     var mail:String?
-    var phoneNumber:String?
-    var carType:String?
+//    var phoneNumber:String?
+//    var carType:String?
     var password:String?
     
     
@@ -68,7 +68,7 @@ class UserModel: NSObject {
     
     func registration(callback:Bool -> Void)
     {
-        if (userName == nil) || (mail == nil) || (phoneNumber == nil) || (carType == nil) || (password == nil)
+        if (userName == nil) || (mail == nil) || (password == nil)
         {
             callback(false)
             return
@@ -78,8 +78,8 @@ class UserModel: NSObject {
         // オブジェクトに値を設定
         obj2.setObject(userName, forKey: "UserName")
         obj2.setObject(mail, forKey: "Mail")
-        obj2.setObject(phoneNumber, forKey: "PhoneNumber")
-        obj2.setObject(carType, forKey: "CarType")
+//        obj2.setObject(phoneNumber, forKey: "PhoneNumber")
+//        obj2.setObject(carType, forKey: "CarType")
         obj2.setObject(password, forKey: "Password")
         
         // データストアへの保存を実施
@@ -98,8 +98,8 @@ class UserModel: NSObject {
                     {
                         UserDefaults.userName = self.userName
                         UserDefaults.mail = self.mail
-                        UserDefaults.phoneNumber = self.phoneNumber
-                        UserDefaults.carType = self.carType
+//                        UserDefaults.phoneNumber = self.phoneNumber
+//                        UserDefaults.carType = self.carType
                         callback(true)
                     }
                     else

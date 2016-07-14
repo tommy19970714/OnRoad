@@ -25,7 +25,7 @@ class WorkDataModel: NSObject {
         self.objectId = objectId
     }
     
-    func save(callback: (NSError?) -> Void)
+    func save(callback: (Bool) -> Void)
     {
         //読み込み
         let userId = UserDefaults.userId
@@ -51,12 +51,13 @@ class WorkDataModel: NSObject {
             if error != nil {
                 // 保存に失敗した場合の処理
                 print("error")
+                callback(false)
                 
             }else{
                 // 保存に成功した場合の処理
                 print("save success")
+                callback(true)
             }
-            callback(error)
         }
     }
     func search(callback: (([DataList])->()))
