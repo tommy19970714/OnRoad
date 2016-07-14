@@ -71,7 +71,6 @@ class CommentDataModel: NSObject {
                 print("error")
                 
             }else{
-                print(objects)
                 
                 var dataLists:[DataList] = []
                 for data in objects{

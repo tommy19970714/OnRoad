@@ -71,7 +71,7 @@ class SignupViewController: UITableViewController, UITextFieldDelegate{
         }else if textField == passwordField {
             if checkField()
             {
-                signup()
+                textField.resignFirstResponder()
             }
         }
         

@@ -48,7 +48,6 @@ class PlaceApiModel: NSObject {
             customParam = "rankby"
             customValue = "distance"
         }
-        print(distance)
         
         Alamofire.request(.GET, requestURL, parameters: ["key" : accessKey,"location": locationStr,customParam:customValue, "types": type!])
             .responseJSON {responce in
@@ -56,7 +55,6 @@ class PlaceApiModel: NSObject {
                     let json: JSON = JSON(responce.result.value!)
                     var datalists:[DataList] = []
                     
-                    print(json)
                     if json["results"].count == 0
                     {
                         return

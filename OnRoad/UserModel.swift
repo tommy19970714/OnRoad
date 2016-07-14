@@ -29,7 +29,6 @@ class UserModel: NSObject {
                 callback(nil)
                 
             }else{
-                print(objects)
                 if objects.count == 0
                 {
                     callback(false)
@@ -52,7 +51,6 @@ class UserModel: NSObject {
                 print("error")
                 
             }else{
-                print(objects)
                 if objects.count == 1 && objects.first?.objectForKey("Password") as? String == password
                 {
                     UserDefaults.userId = objects.first?.objectId

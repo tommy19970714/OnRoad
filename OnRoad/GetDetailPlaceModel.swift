@@ -25,7 +25,6 @@ class GetDetailPlaceModel : NSObject {
                 if response.result.isSuccess {
                     let json: JSON = JSON(response.result.value!)
                     
-                    print(json)
                     let weekday = self.nowWeekday()
                     let opentime = json["result"]["opening_hours"]["weekday_text"][weekday].string
                     

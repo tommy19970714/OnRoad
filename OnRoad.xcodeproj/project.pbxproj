@@ -46,6 +46,7 @@
 		8FCB51F11D25318A006E4CBD /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F01D25318A006E4CBD /* ProfileCell.swift */; };
 		8FCB51F31D2531E1006E4CBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F21D2531E1006E4CBD /* User.swift */; };
 		8FCB51F51D253719006E4CBD /* PlaceApiMdel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */; };
+		8FCF1EED1D3859360095BFE4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCF1EEC1D3859360095BFE4 /* SystemConfiguration.framework */; };
 		8FD624E61D36896F00CB99D0 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD624E51D36896F00CB99D0 /* UserModel.swift */; };
 		8FDC02231D35405A00F94146 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC02221D35405A00F94146 /* FirstViewController.swift */; };
 		8FDC02251D3540CE00F94146 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC02241D3540CE00F94146 /* SignupViewController.swift */; };
@@ -124,6 +125,7 @@
 		8FCB51F01D25318A006E4CBD /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		8FCB51F21D2531E1006E4CBD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceApiMdel.swift; sourceTree = "<group>"; };
+		8FCF1EEC1D3859360095BFE4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8FD624E51D36896F00CB99D0 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8FDC02221D35405A00F94146 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		8FDC02241D3540CE00F94146 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCF1EED1D3859360095BFE4 /* SystemConfiguration.framework in Frameworks */,
 				C370020ADB3E64D018218F49 /* Pods_OnRoad.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +171,7 @@
 		1048274251A771A8DA1564A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FCF1EEC1D3859360095BFE4 /* SystemConfiguration.framework */,
 				D2F92234446ACBADF271529E /* Pods.framework */,
 				F6D6BC8A4C2792098E32285D /* Pods_OnRoad.framework */,
 				0B55D6A534FAD105C84DF6E8 /* Pods_OnRoadTests.framework */,

@@ -50,7 +50,7 @@ class SettingViewController: UIViewController{
     }
     
     @IBAction func tapedButton(sender: AnyObject) {
-        let saveModel = SaveJsonModel(str: "2016-04-01")
+        let saveModel = SaveJsonModel(str: dateToString(myDatePicker.date))
         saveModel.getJson()
     }
     

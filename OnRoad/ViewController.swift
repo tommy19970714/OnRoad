@@ -162,7 +162,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         {
             types.append(type)
         }
-        print(types)
         DataListModel.sharedInstance.update(mapView.region, types: types)
     }
     func clickMenu(sender:UIButton)
@@ -253,7 +252,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 annotation.subtitle = data.getIntervalTime()
                 annotation.dataList = data
                 annotation.image = UIImage(named: data.type!)
-                print(data.title)
                 
                 mapView.addAnnotation(annotation)
             }
@@ -284,7 +282,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.searchBar.showsCancelButton = true
         self.navigationItem.leftBarButtonItem = nil
         self.searchTableView.hidden = false
-        self.searchTableView.reloadData()
+        if searchBar.text != nil
+        {
+            placeAutocomplete(searchBar.text!)
+        }
+        else
+        {
+            searchTableView.reloadData()
+        }
+        
         return true
     }
     

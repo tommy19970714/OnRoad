@@ -37,6 +37,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>地図の表示に位置情報を利用</string>
+	<string>地図の表示に位置情報を利用します</string>
 </dict>
 </plist>

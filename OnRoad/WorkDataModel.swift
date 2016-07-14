@@ -46,6 +46,7 @@ class WorkDataModel: NSObject {
             obj2.objectId = objectId
         }
         
+        
         // データストアへの保存を実施
         obj2.saveEventually { (error: NSError!) -> Void in
             if error != nil {
@@ -74,7 +75,6 @@ class WorkDataModel: NSObject {
                 print("error")
                 
             }else{
-                print(objects)
                 
                 var dataLists:[DataList] = []
                 for data in objects{

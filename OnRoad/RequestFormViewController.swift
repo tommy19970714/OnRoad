@@ -74,51 +74,75 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
         {
             let workDataModel = WorkDataModel()
             workDataModel.setParam(textField.text!,text: textView.text, startPoint: startLocation, endPoint: endLocation,objectId: objectId)
-            workDataModel.save({ result -> Void in
-                
-                var message:String?
-                if result == true {
-                    message = "送信されました！"
-                }else {
-                    message = "送信できませんでした."
+            AlertHelper.showAlert("送信", message: "選択した位置情報とコメントを送信しますがよろしいですか", cancel: "キャンセル", destructive: nil, others: ["OK"], parent: self) {
+                (buttonIndex: Int) in
+                switch buttonIndex {
+                case 1 :
+                    // OK
+                    
+                    workDataModel.save({ result -> Void in
+                        
+                        var message:String?
+                        if result == true {
+                            message = "送信されました！"
+                        }else {
+                            message = "送信できませんでした."
+                        }
+                        AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
+                            (buttonIndex: Int) in
+                            // 押されたボタンのインデックスにて処理を振り分ける
+                            switch buttonIndex {
+                            default :
+                                // キャンセル
+                                break
+                            }
+                            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                    })
+                    
+                    break
+                default :
+                    // キャンセル
+                    break
                 }
-                AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
-                    (buttonIndex: Int) in
-                    // 押されたボタンのインデックスにて処理を振り分ける
-                    switch buttonIndex {
-                    default :
-                        // キャンセル
-                        print("\(buttonIndex)")
-                        break
-                    }
-                    self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-                }
-            })
+            }
         }
         else
         {
-            let commentDataModel = CommentDataModel()
-            commentDataModel.setParam(textField.text!,text: textView.text, location: startLocation, objectId: objectId)
-            commentDataModel.save({ result -> Void in
-                
-                var message:String?
-                if result == true {
-                    message = "送信されました！"
-                }else {
-                    message = "送信できませんでした."
+            AlertHelper.showAlert("送信", message: "選択した位置情報とコメントを送信しますがよろしいですか", cancel: "キャンセル", destructive: nil, others: ["OK"], parent: self) {
+                (buttonIndex: Int) in
+                switch buttonIndex {
+                case 1 :
+                    // OK
+                    
+                    let commentDataModel = CommentDataModel()
+                    commentDataModel.setParam(self.textField.text!,text: self.textView.text, location: self.startLocation, objectId: self.objectId)
+                    commentDataModel.save({ result -> Void in
+                        
+                        var message:String?
+                        if result == true {
+                            message = "送信されました！"
+                        }else {
+                            message = "送信できませんでした."
+                        }
+                        AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
+                            (buttonIndex: Int) in
+                            // 押されたボタンのインデックスにて処理を振り分ける
+                            switch buttonIndex {
+                            default :
+                                // キャンセル
+                                break
+                            }
+                            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                    })
+                    
+                    break
+                default :
+                    // キャンセル
+                    break
                 }
-                AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
-                    (buttonIndex: Int) in
-                    // 押されたボタンのインデックスにて処理を振り分ける
-                    switch buttonIndex {
-                    default :
-                        // キャンセル
-                        print("\(buttonIndex)")
-                        break
-                    }
-                    self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-                }
-            })
+            }
         }
 
     }
@@ -127,14 +151,14 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
      UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
      */
     func textFieldDidBeginEditing(textField: UITextField){
-        print("textFieldDidBeginEditing:" + textField.text!)
+
     }
     
     /*
      UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
      */
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        print("textFieldShouldEndEditing:" + textField.text!)
+
         
         return true
     }
