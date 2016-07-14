@@ -39,8 +39,8 @@
 		8FB114301D38017600962164 /* ReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB1142F1D38017600962164 /* ReadViewController.swift */; };
 		8FB1143B1D3808B500962164 /* privacypolicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FB1143A1D3808B500962164 /* privacypolicy.txt */; };
 		8FB1143D1D3808BB00962164 /* termsofservice.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FB1143C1D3808BB00962164 /* termsofservice.txt */; };
+		8FB114411D38219300962164 /* CommentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB114401D38219300962164 /* CommentDataModel.swift */; };
 		8FB4A6421D1FF0C300D89926 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB4A6411D1FF0C300D89926 /* SettingViewController.swift */; };
-		8FBDF1251D3491A9004DF990 /* DetailWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDF1241D3491A9004DF990 /* DetailWorkViewController.swift */; };
 		8FBDF1271D349698004DF990 /* DetailOpenDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDF1261D349698004DF990 /* DetailOpenDataViewController.swift */; };
 		8FCB51EF1D253132006E4CBD /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51EE1D253132006E4CBD /* LeftMenuViewController.swift */; };
 		8FCB51F11D25318A006E4CBD /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F01D25318A006E4CBD /* ProfileCell.swift */; };
@@ -117,8 +117,8 @@
 		8FB1142F1D38017600962164 /* ReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadViewController.swift; sourceTree = "<group>"; };
 		8FB1143A1D3808B500962164 /* privacypolicy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privacypolicy.txt; sourceTree = "<group>"; };
 		8FB1143C1D3808BB00962164 /* termsofservice.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = termsofservice.txt; sourceTree = "<group>"; };
+		8FB114401D38219300962164 /* CommentDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentDataModel.swift; sourceTree = "<group>"; };
 		8FB4A6411D1FF0C300D89926 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		8FBDF1241D3491A9004DF990 /* DetailWorkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailWorkViewController.swift; sourceTree = "<group>"; };
 		8FBDF1261D349698004DF990 /* DetailOpenDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOpenDataViewController.swift; sourceTree = "<group>"; };
 		8FCB51EE1D253132006E4CBD /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		8FCB51F01D25318A006E4CBD /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -264,6 +264,7 @@
 				8F05B5C91D32109B00EDF712 /* CustomDetailButton.swift */,
 				8F05B5CB1D3216B100EDF712 /* GetDetailPlaceModel.swift */,
 				8FD624E51D36896F00CB99D0 /* UserModel.swift */,
+				8FB114401D38219300962164 /* CommentDataModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -288,7 +289,6 @@
 				8F9E49831D2E81A200BAC96F /* RequestFormViewController.swift */,
 				8FAB161C1D31473500B4BC77 /* DetailViewController.swift */,
 				8F07A1801D330D040051916D /* WorkListViewController.swift */,
-				8FBDF1241D3491A9004DF990 /* DetailWorkViewController.swift */,
 				8FBDF1261D349698004DF990 /* DetailOpenDataViewController.swift */,
 				8FDC02221D35405A00F94146 /* FirstViewController.swift */,
 				8FDC02241D3540CE00F94146 /* SignupViewController.swift */,
@@ -595,6 +595,7 @@
 				8F72AF461D23F544008CFFB0 /* UIViewController.swift in Sources */,
 				8F9E49821D2E68A600BAC96F /* RequestWorkViewController.swift in Sources */,
 				8F05B5CC1D3216B100EDF712 /* GetDetailPlaceModel.swift in Sources */,
+				8FB114411D38219300962164 /* CommentDataModel.swift in Sources */,
 				8F05B5C81D320A1100EDF712 /* DesignableButton.swift in Sources */,
 				8F3F00AE1D202E3100BCC0DD /* DataList.swift in Sources */,
 				8F3D95FB1D2177DD00BA9EE6 /* CustomCalloutView.swift in Sources */,
@@ -607,7 +608,6 @@
 				8F9E49881D2E927100BAC96F /* UserDefaults.swift in Sources */,
 				8FDC02231D35405A00F94146 /* FirstViewController.swift in Sources */,
 				8F9E49801D2E61D500BAC96F /* Color.swift in Sources */,
-				8FBDF1251D3491A9004DF990 /* DetailWorkViewController.swift in Sources */,
 				8F1311971D1FDEB300805E4F /* AppDelegate.swift in Sources */,
 				8FA646A81D200110007B864D /* SwiftyJSON.swift in Sources */,
 				8F05B5CA1D32109B00EDF712 /* CustomDetailButton.swift in Sources */,

@@ -51,7 +51,6 @@ class DetailOpenDataViewController: UIViewController {
         myGeocorder.reverseGeocodeLocation(myLocation,
                                            completionHandler: { (placemarks, error) -> Void in
                                             
-                                            var placemark: CLPlacemark!
                                             
                                             for placemark in placemarks! {
                                                 
