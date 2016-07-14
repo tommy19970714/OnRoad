@@ -91,6 +91,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.segueWorkListView(_:)), name: "segueWorkListView", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.review(_:)), name: "review", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.signout(_:)), name: "signout", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.postComment(_:)), name: "postComment", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.segueCommentListView(_:)), name: "segueCommentListView", object: nil)
+
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -102,6 +105,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         //監視追加
         DataListModel.sharedInstance.addObserver(self, forKeyPath: "dataLists", options: [.New], context: nil)
+    }
+    @IBAction func tappedPostComment(sender: UIButton) {
+        post()
     }
     
     @IBAction func tappedButton0(sender: CustomUIButton) {
@@ -146,7 +152,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         print(types)
         DataListModel.sharedInstance.update(mapView.region, types: types)
     }
-    
     func clickMenu(sender:UIButton)
     {
         self.slideMenuController()?.openLeft()
@@ -295,7 +300,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func postComment(sender:NSNotification) {
+        post()
+    }
+    func post()
+    {
+        let requestWorkViewController = RequestWorkViewController()
+        requestWorkViewController.message = "ここに口コミを書く"
+        requestWorkViewController.isWork = false
+        let nav = UINavigationController(rootViewController: requestWorkViewController)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
     func segueRequestWorkView(sender:NSNotification)
     {
         let requestWorkViewController = RequestWorkViewController()
@@ -307,6 +322,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func segueWorkListView(sender:NSNotification)
     {
         let workListViewController = WorkListViewController()
+        workListViewController.iswork = true
+        let nav = UINavigationController(rootViewController: workListViewController)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    func segueCommentListView(sender:NSNotification)
+    {
+        let workListViewController = WorkListViewController()
+        workListViewController.iswork = false
         let nav = UINavigationController(rootViewController: workListViewController)
         self.presentViewController(nav, animated: true, completion: nil)
     }
@@ -346,13 +370,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     {
         let customDetailButtom = sender as! CustomDetailButton
         
-        if customDetailButtom.dataList?.type == Types.workdata.rawValue
+        if customDetailButtom.dataList?.type == Types.workdata.rawValue || customDetailButtom.dataList?.type == Types.comment.rawValue
         {
-            let detailWorkViewController = DetailWorkViewController()
+            let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+            let detailWorkViewController = stroBoardMain.instantiateViewControllerWithIdentifier("RequestFormViewController") as! RequestFormViewController
             detailWorkViewController.objectId = customDetailButtom.dataList?.objectId
             detailWorkViewController.firstText = customDetailButtom.dataList?.text
             detailWorkViewController.firstTitle = customDetailButtom.dataList?.title
+            detailWorkViewController.iswork = true
+            detailWorkViewController.isLook = true
             self.navigationController!.pushViewController(detailWorkViewController, animated: true)
+            
+            
         }
         else if customDetailButtom.dataList?.type == Types.opendata.rawValue
         {

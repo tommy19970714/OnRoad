@@ -15,6 +15,7 @@ class WorkListViewController: UIViewController, UITableViewDelegate, UITableView
     
     var works:[DataList] = []
     
+    var iswork:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +34,22 @@ class WorkListViewController: UIViewController, UITableViewDelegate, UITableView
         backbutton = UIBarButtonItem(image: UIImage(named: "closemenu"), style: .Plain, target: self, action: #selector(WorkListViewController.backHome(_:)))
         self.navigationItem.leftBarButtonItem = backbutton
         
-        
-        let workDataModel = WorkDataModel()
-        workDataModel.search({result in
-            self.works = result
-            self.tableView.reloadData()
-        })
+        if iswork == true
+        {
+            let workDataModel = WorkDataModel()
+            workDataModel.search({result in
+                self.works = result
+                self.tableView.reloadData()
+            })
+        }
+        else
+        {
+            let commentDataModel = CommentDataModel()
+            commentDataModel.search({result in
+                self.works = result
+                self.tableView.reloadData()
+            })
+        }
         
     }
     override func viewWillDisappear(animated: Bool) {
@@ -62,12 +73,16 @@ class WorkListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let requestFromViewController = RequestFormViewController()
+        let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+        let requestFromViewController = stroBoardMain.instantiateViewControllerWithIdentifier("RequestFormViewController") as! RequestFormViewController
+        
         requestFromViewController.startLocation = works[indexPath.row].location
         requestFromViewController.endLocation = works[indexPath.row].endPoint
         requestFromViewController.firstText = works[indexPath.row].text
         requestFromViewController.firstTitle = works[indexPath.row].title
         requestFromViewController.objectId = works[indexPath.row].objectId
+        requestFromViewController.isLook = false
+        requestFromViewController.iswork = true
         self.navigationController!.pushViewController(requestFromViewController, animated: true)
     }
     

@@ -102,4 +102,41 @@ class GetDataModel: NSObject {
             }
         })
     }
+    
+    func getCommentData(callback: (([DataList])->()))
+    {
+        // クラスのNCMBObjectを作成
+        let obj3 = NCMBQuery(className: "CommentData")
+        // objectIdプロパティを設定
+        obj3.whereKey("Location", withinGeoBoxFromSouthwest: swGeoPoint!, toNortheast:neGeoPoint!)
+        obj3.limit = 100
+        // 設定されたobjectIdを元にデータストアからデータを取得
+        obj3.findObjectsInBackgroundWithBlock({(objects, error) in
+            if error != nil {
+                // 取得に失敗した場合の処理
+            }else{
+                // 取得に成功した場合の処理
+                
+                var dataLists:[DataList] = []
+                for data in objects{
+                    let dataList = DataList()
+                    let place = data.objectForKey("Location") as! NCMBGeoPoint
+                    dataList.location = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+                    
+                    dataList.objectId = data.objectId
+                    dataList.title = data.objectForKey("Title") as? String
+                    dataList.text = data.objectForKey("Text") as? String
+                    dataList.userId = data.objectForKey("UserId") as? String
+                    dataList.userName = data.objectForKey("UserName") as? String
+                    
+                    dataList.updateDate = data.objectForKey("updateDate") as? String
+                    dataList.createDate = data.objectForKey("createDate") as? String
+                    dataList.type = Types.comment.rawValue
+                    
+                    dataLists.append(dataList)
+                }
+                callback(dataLists)
+            }
+        })
+    }
 }

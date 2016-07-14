@@ -8,51 +8,48 @@
 
 import UIKit
 
-class RequestFormViewController: UIViewController,UITextViewDelegate, UITextFieldDelegate {
+class RequestFormViewController: UITableViewController, UITextFieldDelegate {
     
-    var textView:UITextView!
-    var textField:UITextField!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textView: UITextView!
     
     var startLocation:CLLocationCoordinate2D!
     var endLocation:CLLocationCoordinate2D!
     
     var decideButton:UIBarButtonItem!
     
-    var firstText:String? = "要件:\n\n期間:\n\n金額:\n\n連絡先:\n\n"
-    var firstTitle:String? = "タイトル"
+    var firstText:String? = "詳細:\n\n日時:\n\n運賃:\n\n連絡先:\n\n"
+    var firstTitle:String?
     
     var objectId:String?
+    
+    var isLook:Bool?
+    var iswork:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //textView
-        textView = UITextView(frame: CGRectMake(0, 60, view.frame.width, view.frame.height-60))
+//        textView.delegate = self
         textView.text = firstText
-        textView.font = UIFont.systemFontOfSize(CGFloat(20))
-        textView.textColor = UIColor.blackColor()
-        textView.textAlignment = NSTextAlignment.Left
-        textView.dataDetectorTypes = UIDataDetectorTypes.All
-        textView.delegate = self
-        self.view.addSubview(textView)
         
         //textField
-        textField = UITextField(frame: CGRectMake(0, 0, view.frame.width-15, 45))
-        textField.text = firstTitle
-        textField.placeholder = "タイトル"
-        textField.font = UIFont.systemFontOfSize(CGFloat(20))
-        textField.textColor = UIColor.blackColor()
-        textField.textAlignment = NSTextAlignment.Left
         textField.delegate = self
-        textField.borderStyle = UITextBorderStyle.RoundedRect
-        textField.layer.position = CGPoint(x:self.view.bounds.width/2,y:-27)
-        self.textView.addSubview(textField)
+        textField.text = firstTitle
         
         textField.becomeFirstResponder()
         
         //navigationbar
-        decideButton = UIBarButtonItem(title: "決定", style: .Plain, target: self, action: #selector(RequestFormViewController.clickDecideButton(_:)))
-        self.navigationItem.rightBarButtonItem = decideButton
+        if isLook == false
+        {
+            decideButton = UIBarButtonItem(title: "決定", style: .Plain, target: self, action: #selector(RequestFormViewController.clickDecideButton(_:)))
+            self.navigationItem.rightBarButtonItem = decideButton
+        }
+        else
+        {
+            textField.enabled = false
+            textView.editable = false
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -60,56 +57,70 @@ class RequestFormViewController: UIViewController,UITextViewDelegate, UITextFiel
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+
     }
     
     func clickDecideButton(sender:UIButton)
     {
-        if textField.text == nil && textView.text == firstText
+        if textField.text == nil || (textView.text == firstText)
         {
             AlertHelper.showAlert("アラート", message: "タイトル又は内容が入力されていません．", cancel: "ok", destructive: nil, others: nil, parent: self){
                 (buttonIndex: Int) in
             }
             return
         }
-        let workDataModel = WorkDataModel()
-        workDataModel.setParam(textField.text!,text: textView.text, startPoint: startLocation, endPoint: endLocation,objectId: objectId)
-        workDataModel.save({ result -> Void in
-            
-            var message:String?
-            if result == true {
-                message = "送信されました！"
-            }else {
-                message = "送信できませんでした."
-            }
-            AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
-                (buttonIndex: Int) in
-                // 押されたボタンのインデックスにて処理を振り分ける
-                switch buttonIndex {
-                default :
-                    // キャンセル
-                    print("\(buttonIndex)")
-                    break
+        
+        if iswork == true
+        {
+            let workDataModel = WorkDataModel()
+            workDataModel.setParam(textField.text!,text: textView.text, startPoint: startLocation, endPoint: endLocation,objectId: objectId)
+            workDataModel.save({ result -> Void in
+                
+                var message:String?
+                if result == true {
+                    message = "送信されました！"
+                }else {
+                    message = "送信できませんでした."
                 }
-                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-            }
-        })
-    }
-    
-    //テキストビューが変更された
-    func textViewDidChange(textView: UITextView) {
-        print("textViewDidChange : \(textView.text)");
-    }
-    
-    // テキストビューにフォーカスが移った
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        print("textViewShouldBeginEditing : \(textView.text)");
-        return true
-    }
-    
-    // テキストビューからフォーカスが失われた
-    func textViewShouldEndEditing(textView: UITextView) -> Bool {
-        print("textViewShouldEndEditing : \(textView.text)");
-        return true
+                AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
+                    (buttonIndex: Int) in
+                    // 押されたボタンのインデックスにて処理を振り分ける
+                    switch buttonIndex {
+                    default :
+                        // キャンセル
+                        print("\(buttonIndex)")
+                        break
+                    }
+                    self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                }
+            })
+        }
+        else
+        {
+            let commentDataModel = CommentDataModel()
+            commentDataModel.setParam(textField.text!,text: textView.text, location: startLocation, objectId: objectId)
+            commentDataModel.save({ result -> Void in
+                
+                var message:String?
+                if result == true {
+                    message = "送信されました！"
+                }else {
+                    message = "送信できませんでした."
+                }
+                AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
+                    (buttonIndex: Int) in
+                    // 押されたボタンのインデックスにて処理を振り分ける
+                    switch buttonIndex {
+                    default :
+                        // キャンセル
+                        print("\(buttonIndex)")
+                        break
+                    }
+                    self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                }
+            })
+        }
+
     }
     
     /*
@@ -132,7 +143,13 @@ class RequestFormViewController: UIViewController,UITextViewDelegate, UITextFiel
      改行ボタンが押された際に呼ばれるデリゲートメソッド.
      */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        
+        
+        if textField == self.textField {
+            self.textView.becomeFirstResponder()
+        }else if textField == textView {
+            self.textView.resignFirstResponder()
+        }
         
         return true
     }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate,UITableViewDelegate, UITableViewDataSource {
     
     var mapView: MKMapView!
     var searchBar: UISearchBar!
@@ -27,6 +27,10 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
     var locationManager: CLLocationManager!
     
     var isFirst:Bool = true
+    var isWork:Bool = true
+    
+    var searchTableView:UITableView!
+    var searchItem:[MKMapItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,13 +106,30 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
 //            myPin.subtitle = "サブタイトル"
             mapView.addAnnotation(annotation!)
         }
-
         
+        //tableviewの生成
+        let h = (self.navigationController?.navigationBar.frame.size.height)! + UIApplication.sharedApplication().statusBarFrame.height
+        searchTableView = UITableView(frame: CGRect(x: 0, y: h, width: view.frame.width, height: view.frame.height-h))
+        searchTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        searchTableView.dataSource = self
+        searchTableView.delegate = self
+        searchTableView.hidden = true
+        self.view.addSubview(searchTableView)
     }
     
     func onClickButton(sender:UIButton)
     {
-        if isFirst
+        if isWork == false //口コミ
+        {
+            let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+            let requestFromViewController = stroBoardMain.instantiateViewControllerWithIdentifier("RequestFormViewController") as! RequestFormViewController
+            requestFromViewController.startLocation = mapView.centerCoordinate
+            requestFromViewController.iswork = false
+            requestFromViewController.isLook = false
+            requestFromViewController.firstText = "口コミ"
+            self.navigationController!.pushViewController(requestFromViewController, animated: true)
+        }
+        else if isFirst
         {
             let requestWorkViewController = RequestWorkViewController()
             requestWorkViewController.location = mapView.centerCoordinate
@@ -118,9 +139,12 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         }
         else
         {
-            let requestFromViewController = RequestFormViewController()
+            let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+            let requestFromViewController = stroBoardMain.instantiateViewControllerWithIdentifier("RequestFormViewController") as! RequestFormViewController
             requestFromViewController.startLocation = location
             requestFromViewController.endLocation = mapView.centerCoordinate
+            requestFromViewController.isLook = false
+            requestFromViewController.iswork = true
             self.navigationController!.pushViewController(requestFromViewController, animated: true)
         }
     }
@@ -193,13 +217,13 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
     //テキストが変更される毎に呼ばれる
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        
+        placeAutocomplete(searchText)
     }
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
         self.searchBar.showsCancelButton = true
         self.navigationItem.leftBarButtonItem = nil
-        
+        self.searchTableView.hidden = false
         return true
     }
     
@@ -207,13 +231,15 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         self.searchBar.showsCancelButton = false
         self.navigationItem.leftBarButtonItem = backbutton
         self.searchBar.resignFirstResponder()
-        
+        self.searchTableView.hidden = true
         return true
     }
     
     // Cancelボタンが押された時に呼ばれる
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        
+        self.searchTableView.hidden = true
+        self.searchItem = []
+        self.searchTableView.reloadData()
         self.searchBar.resignFirstResponder()
     }
     
@@ -221,6 +247,72 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
         self.view.endEditing(true)
+        if(self.searchItem.count > 1)
+        {
+            mapView.setCenterCoordinate(self.searchItem[0].placemark.coordinate , animated: true)
+            searchTableView.hidden = true
+            searchItem = []
+            searchTableView.reloadData()
+        }
+        
     }
-
+    
+    /*
+     Cellが選択された際に呼び出されるデリゲートメソッド.
+     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        mapView.setCenterCoordinate(self.searchItem[indexPath.row].placemark.coordinate , animated: true)
+        searchTableView.hidden = true
+        searchItem = []
+        searchTableView.reloadData()
+        self.searchBar.resignFirstResponder()
+        self.view.endEditing(true)
+    }
+    
+    /*
+     Cellの総数を返すデータソースメソッド.
+     (実装必須)
+     */
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchItem.count
+    }
+    
+    /*
+     Cellに値を設定するデータソースメソッド.
+     (実装必須)
+     */
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        // 再利用するCellを取得する.
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        
+        // Cellに値を設定する.
+        cell.textLabel!.text = searchItem[indexPath.row].name
+        
+        return cell
+    }
+    func placeAutocomplete(str:String) {
+        
+        let myRequest: MKLocalSearchRequest = MKLocalSearchRequest()
+        myRequest.region = mapView.region
+        myRequest.naturalLanguageQuery = str
+        let mySearch: MKLocalSearch = MKLocalSearch(request: myRequest)
+        
+        // 検索開始.
+        mySearch.startWithCompletionHandler { (response, error) -> Void in
+            
+            if error != nil {
+                print("地名無し")
+            }
+            else if response!.mapItems.count > 0 {
+                for item in response!.mapItems {
+                    
+                    // 検索結果の内名前を出力.
+                    print(item.name)
+                }
+                self.searchItem = response!.mapItems
+                self.searchTableView.reloadData()
+            }
+        }
+    }
 }

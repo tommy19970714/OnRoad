@@ -43,10 +43,10 @@ class DataListModel: NSObject {
         {
             tempTypes.removeAtIndex(indexCommentData)
             
-//            let getDataModel = GetDataModel(region: region)
-//            getDataModel.getWorkData({result in
-//                self.dataLists += result
-//            })
+            let getDataModel = GetDataModel(region: region)
+            getDataModel.getCommentData({result in
+                self.dataLists += result
+            })
         }
         if let indexWorkData = tempTypes.indexOf(Types.workdata.rawValue)
         {
