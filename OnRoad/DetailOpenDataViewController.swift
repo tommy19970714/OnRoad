@@ -14,6 +14,7 @@ class DetailOpenDataViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var carTypeLabel: UILabel!
+    @IBOutlet weak var supportedLabel: UILabel!
     
     @IBOutlet weak var streetButton: UIButton!
     
@@ -25,6 +26,7 @@ class DetailOpenDataViewController: UIViewController {
         titleLabel.text = dataList?.title
         timeLabel.text = dataList?.getIntervalTime()
         carTypeLabel.text = dataList?.carType
+        supportedLabel.text = "提供元:\n株式会社フレームワークス"
         
         streetButton.addTarget(self, action: #selector(DetailOpenDataViewController.clickStreetView(_:)), forControlEvents: .TouchUpInside)
         

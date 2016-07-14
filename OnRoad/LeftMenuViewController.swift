@@ -138,7 +138,7 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 0
         {
-            return 170
+            return 90
         }
         else if indexPath.row == 0 && indexPath.section == 1
         {

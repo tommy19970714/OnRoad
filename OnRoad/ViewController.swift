@@ -30,6 +30,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var button3: CustomUIButton!
     @IBOutlet weak var button4: CustomUIButton!
     @IBOutlet weak var button5: CustomUIButton!
+    @IBOutlet weak var button6: CustomUIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,11 +72,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
         button0.setIcon("Opendata")
-        button1.setIcon("仕事")
-        button2.setIcon("食事処")
-        button3.setIcon("ガソリンスタンド")
-        button4.setIcon("パーキング")
-        button5.setIcon("コンビニ")
+        button1.setIcon("コメント")
+        button2.setIcon("仕事")
+        button3.setIcon("食事処")
+        button4.setIcon("ガソリンスタンド")
+        button5.setIcon("パーキング")
+        button6.setIcon("コンビニ")
+        
         
         menubutton = UIBarButtonItem(image: UIImage(named: "menu"), style: .Plain, target: self, action: #selector(ViewController.clickMenu(_:)))
         self.navigationItem.leftBarButtonItem = menubutton
@@ -100,22 +103,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         sender.changeSw()
     }
     @IBAction func tappedButton1(sender: CustomUIButton) {
-        changeType(sender, type: Types.workdata.rawValue)
+        changeType(sender, type: Types.comment.rawValue)
         sender.changeSw()
     }
     @IBAction func tappedButton2(sender: CustomUIButton) {
-        changeType(sender, type: Types.restaurant.rawValue)
+        changeType(sender, type: Types.workdata.rawValue)
         sender.changeSw()
     }
     @IBAction func tappedButton3(sender: CustomUIButton) {
-        changeType(sender, type: Types.gas_station.rawValue)
+        changeType(sender, type: Types.restaurant.rawValue)
         sender.changeSw()
     }
     @IBAction func tappedButton4(sender: CustomUIButton) {
-        changeType(sender, type: Types.parking.rawValue)
+        changeType(sender, type: Types.gas_station.rawValue)
         sender.changeSw()
     }
     @IBAction func tappedButton5(sender: CustomUIButton) {
+        changeType(sender, type: Types.parking.rawValue)
+        sender.changeSw()
+    }
+    @IBAction func tappedButton6(sender: CustomUIButton) {
         changeType(sender, type: Types.convenience_store.rawValue)
         sender.changeSw()
     }

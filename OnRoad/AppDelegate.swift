@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ViewControllerを生成する.
         let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
         
-        if UserDefaults.userId == "aaa"
+        if UserDefaults.userId != nil
         {
             let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
             //        let myFirstViewController = stroBoardMain.instantiateViewControllerWithIdentifier("SettingViewController") as! SettingViewController

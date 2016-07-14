@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
         detailModel.placeid = self.placeId
         detailModel.getDetail({opentime in
             if opentime == nil{
-                self.timeLabel.text = "???"
+                self.timeLabel.text = "---"
             }else{
                 self.timeLabel.text = opentime
             }

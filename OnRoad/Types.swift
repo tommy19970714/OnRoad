@@ -23,6 +23,7 @@ enum Types :String {
     case parking = "parking"
     case opendata = "opendata"
     case workdata = "workdata"
+    case comment = "comment"
     
-    static let allType: [String] = [restaurant.rawValue, convenience_store.rawValue, gas_station.rawValue, parking.rawValue, opendata.rawValue, workdata.rawValue]
+    static let allType: [String] = [restaurant.rawValue, convenience_store.rawValue, gas_station.rawValue, parking.rawValue, opendata.rawValue, workdata.rawValue, comment.rawValue]
 }

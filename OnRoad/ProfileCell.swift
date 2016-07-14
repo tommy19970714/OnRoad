@@ -26,18 +26,18 @@ class ProfileCell: UITableViewCell {
     
     func setCell(user :User) {
         
-        
-        name = UILabel(frame: CGRectMake(self.frame.width/2-50,134 , 100, 20))
+        name = UILabel(frame: CGRectMake(self.frame.width/2-50, 26, 100, 35))
         name.text = user.username
+        name.font = UIFont.systemFontOfSize(23)
         name.textAlignment = NSTextAlignment.Center
         self.addSubview(name)
         
-        profileIcon = UIImageView(frame: CGRectMake(self.frame.width/2-50,25 , 100, 100))
+//        profileIcon = UIImageView(frame: CGRectMake(self.frame.width/2-50,25 , 100, 100))
 //        profileIcon.sd_setImageWithURL(NSURL(string: user.profile_picture!))
-        profileIcon.image = UIImage(named: "3")
-        profileIcon.layer.cornerRadius = profileIcon.frame.size.width / 2.0
-        profileIcon.layer.masksToBounds = true
-        self.addSubview(profileIcon)
+//        profileIcon.image = UIImage(named: "3")
+//        profileIcon.layer.cornerRadius = profileIcon.frame.size.width / 2.0
+//        profileIcon.layer.masksToBounds = true
+//        self.addSubview(profileIcon)
     }
     
 }
