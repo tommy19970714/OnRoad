@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import MapKit
+import GoogleMaps
 
-class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate,UITableViewDelegate, UITableViewDataSource {
+class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate,UITableViewDelegate, UITableViewDataSource{
     
     var mapView: MKMapView!
     var searchBar: UISearchBar!
@@ -109,12 +110,14 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         
         //tableviewの生成
         let h = (self.navigationController?.navigationBar.frame.size.height)! + UIApplication.sharedApplication().statusBarFrame.height
-        searchTableView = UITableView(frame: CGRect(x: 0, y: h, width: view.frame.width, height: view.frame.height-h))
+        searchTableView = UITableView(frame: CGRect(x: 0, y: h, width: view.frame.width, height: view.frame.height*2/3))
         searchTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         searchTableView.dataSource = self
         searchTableView.delegate = self
         searchTableView.hidden = true
         self.view.addSubview(searchTableView)
+        
+        
     }
     
     func onClickButton(sender:UIButton)
@@ -224,6 +227,7 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         self.searchBar.showsCancelButton = true
         self.navigationItem.leftBarButtonItem = nil
         self.searchTableView.hidden = false
+        self.searchTableView.reloadData()
         return true
     }
     
@@ -247,11 +251,10 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
         self.view.endEditing(true)
-        if(self.searchItem.count > 1)
+        if(self.searchItem.count >= 1)
         {
             mapView.setCenterCoordinate(self.searchItem[0].placemark.coordinate , animated: true)
             searchTableView.hidden = true
-            searchItem = []
             searchTableView.reloadData()
         }
         
@@ -315,4 +318,5 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
             }
         }
     }
+    
 }
