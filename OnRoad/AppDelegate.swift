@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let applicationkey = "1da723c029fbce317b29a3888e237ec5d13cdada402e2ea0463a5b537980166f"
     let clientkey      = "110da5c45c1a4da41b5f7bf7f8ed871a6e7eb9e846ad6bf64d1360e88637ada4"
     let cGoogleMapsAPIKey = "AIzaSyB_XVDRakZ2Y9GgkDKkTu_imjHgHiPdsJY"
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // NCMB SDKの初期化
         NCMB.setApplicationKey(applicationkey, clientKey: clientkey)
@@ -54,9 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = myFirstViewController
         }
         self.window?.makeKeyAndVisible()
-        
-        UserDefaults.userId = "vdhsaknjavs"
-        UserDefaults.userName = "toshiki"
         
         return true
     }

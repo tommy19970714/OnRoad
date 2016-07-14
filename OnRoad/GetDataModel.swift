@@ -43,17 +43,17 @@ class GetDataModel: NSObject {
                 
                 var dataLists:[DataList] = []
                 for data in objects{
-                    var dataList = DataList()
+                    let dataList = DataList()
                     let place = data.objectForKey("Location") as! NCMBGeoPoint
                     dataList.location = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
                     
                     dataList.objectId = data.objectId
-                    dataList.title = data.objectForKey("Title") as! String
-                    dataList.startTime = data.objectForKey("StartTime") as! NSDate
-                    dataList.endTime = data.objectForKey("EndTime") as! NSDate
-                    dataList.updateDate = data.objectForKey("updateDate") as! String
-                    dataList.createDate = data.objectForKey("createDate") as! String
-                    dataList.carType = data.objectForKey("carType") as! String
+                    dataList.title = data.objectForKey("Title") as? String
+                    dataList.startTime = data.objectForKey("StartTime") as? NSDate
+                    dataList.endTime = data.objectForKey("EndTime") as? NSDate
+                    dataList.updateDate = data.objectForKey("updateDate") as? String
+                    dataList.createDate = data.objectForKey("createDate") as? String
+                    dataList.carType = data.objectForKey("carType") as? String
                     dataList.type = Types.opendata.rawValue
                     
                     dataLists.append(dataList)
@@ -79,7 +79,7 @@ class GetDataModel: NSObject {
                 
                 var dataLists:[DataList] = []
                 for data in objects{
-                    var dataList = DataList()
+                    let dataList = DataList()
                     let place = data.objectForKey("StartPoint") as! NCMBGeoPoint
                     dataList.location = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
                     
@@ -87,13 +87,13 @@ class GetDataModel: NSObject {
                     dataList.endPoint = CLLocationCoordinate2D(latitude: endPoint.latitude, longitude: endPoint.longitude)
                     
                     dataList.objectId = data.objectId
-                    dataList.title = data.objectForKey("Title") as! String
-                    dataList.text = data.objectForKey("Text") as! String
-                    dataList.userId = data.objectForKey("UserId") as! String
-                    dataList.userName = data.objectForKey("UserName") as! String
+                    dataList.title = data.objectForKey("Title") as? String
+                    dataList.text = data.objectForKey("Text") as? String
+                    dataList.userId = data.objectForKey("UserId") as? String
+                    dataList.userName = data.objectForKey("UserName") as? String
 
-                    dataList.updateDate = data.objectForKey("updateDate") as! String
-                    dataList.createDate = data.objectForKey("createDate") as! String
+                    dataList.updateDate = data.objectForKey("updateDate") as? String
+                    dataList.createDate = data.objectForKey("createDate") as? String
                     dataList.type = Types.workdata.rawValue
                     
                     dataLists.append(dataList)

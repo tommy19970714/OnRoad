@@ -12,8 +12,8 @@ class SignupViewController: UITableViewController, UITextFieldDelegate{
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var mailField: UITextField!
-    @IBOutlet weak var phoneField: UITextField!
-    @IBOutlet weak var carField: UITextField!
+//    @IBOutlet weak var phoneField: UITextField!
+//    @IBOutlet weak var carField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
     var backbutton: UIBarButtonItem!
@@ -23,8 +23,8 @@ class SignupViewController: UITableViewController, UITextFieldDelegate{
         
         usernameField.delegate = self
         mailField.delegate = self
-        phoneField.delegate = self
-        carField.delegate = self
+//        phoneField.delegate = self
+//        carField.delegate = self
         passwordField.delegate = self
         
         backbutton = UIBarButtonItem(image: UIImage(named: "closemenu"), style: .Plain, target: self, action: #selector(SignupViewController.backHome(_:)))
@@ -46,6 +46,16 @@ class SignupViewController: UITableViewController, UITextFieldDelegate{
             signup()
         }
     }
+    @IBAction func readRule(sender: UIButton) {
+        let readViewController = ReadViewController()
+        readViewController.readFile = "termsofservice"
+        self.navigationController!.pushViewController(readViewController, animated: true)
+    }
+    @IBAction func readPrivacyPolicy(sender: UIButton) {
+        let readViewController = ReadViewController()
+        readViewController.readFile = "privacypolicy"
+        self.navigationController!.pushViewController(readViewController, animated: true)
+    }
     
     func backHome(sender:UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -57,9 +67,7 @@ class SignupViewController: UITableViewController, UITextFieldDelegate{
         if textField == usernameField {
             mailField.becomeFirstResponder()
         }else if textField == mailField {
-            phoneField.becomeFirstResponder()
-        }else if textField == phoneField {
-            carField.becomeFirstResponder()
+            passwordField.becomeFirstResponder()
         }else if textField == passwordField {
             if checkField()
             {
@@ -76,10 +84,10 @@ class SignupViewController: UITableViewController, UITextFieldDelegate{
             
             if (mailField.text?.containsString("@") == true) && (mailField.text?.utf16.count >= 3) {
                 
-                if (checkNum(phoneField.text) == true) && self.phoneField.text?.utf16.count >= 9 {
-                    
-                    if carField.text != nil {
-                        
+//                if (checkNum(phoneField.text) == true) && self.phoneField.text?.utf16.count >= 9 {
+//                    
+//                    if carField.text != nil {
+                
                         if passwordField.text?.utf16.count >= 4 && passwordField.text?.utf16.count <= 16 && checkStr(passwordField.text){
                             
                             return true
@@ -87,14 +95,14 @@ class SignupViewController: UITableViewController, UITextFieldDelegate{
                             AlertHelper.showOkAlert("エラー", message: "パスワードは半角英数字で4文字以上、16文字以下にしてください．", parent: self)
                             return false
                         }
-                    }else{
-                        AlertHelper.showOkAlert("エラー", message: "車の種類が選択されていません．", parent: self)
-                        return false
-                    }
-                }else{
-                    AlertHelper.showOkAlert("エラー", message: "電話番号が間違っています．", parent: self)
-                    return false
-                }
+//                    }else{
+//                        AlertHelper.showOkAlert("エラー", message: "車の種類が選択されていません．", parent: self)
+//                        return false
+//                    }
+//                }else{
+//                    AlertHelper.showOkAlert("エラー", message: "電話番号が間違っています．", parent: self)
+//                    return false
+//                }
             }else {
                 AlertHelper.showOkAlert("エラー", message: "メールアドレスが間違っています．", parent: self)
                 return false
@@ -141,8 +149,8 @@ class SignupViewController: UITableViewController, UITextFieldDelegate{
         let userModel = UserModel()
         userModel.userName = userName
         userModel.mail = self.mailField.text
-        userModel.phoneNumber = self.phoneField.text
-        userModel.carType = self.carField.text
+//        userModel.phoneNumber = self.phoneField.text
+//        userModel.carType = self.carField.text
         userModel.password = self.passwordField.text
         
         userModel.checkUserId(userName!,callback: {responce in

@@ -64,7 +64,7 @@ class RequestFormViewController: UIViewController,UITextViewDelegate, UITextFiel
     
     func clickDecideButton(sender:UIButton)
     {
-        if textField.text == nil || textView.text == firstText
+        if textField.text == nil && textView.text == firstText
         {
             AlertHelper.showAlert("アラート", message: "タイトル又は内容が入力されていません．", cancel: "ok", destructive: nil, others: nil, parent: self){
                 (buttonIndex: Int) in
@@ -73,10 +73,10 @@ class RequestFormViewController: UIViewController,UITextViewDelegate, UITextFiel
         }
         let workDataModel = WorkDataModel()
         workDataModel.setParam(textField.text!,text: textView.text, startPoint: startLocation, endPoint: endLocation,objectId: objectId)
-        workDataModel.save({(error: NSError?) -> Void in
+        workDataModel.save({ result -> Void in
             
             var message:String?
-            if error == nil {
+            if result == true {
                 message = "送信されました！"
             }else {
                 message = "送信できませんでした."

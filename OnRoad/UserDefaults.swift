@@ -14,8 +14,8 @@ struct UserDefaults {
     private static let userIdKey = "userId"
     private static let userNameKey = "userName"
     private static let mailKey = "mail"
-    private static let phoneNumberKey = "phoneNumber"
-    private static let carTypeKey = "carType"
+//    private static let phoneNumberKey = "phoneNumber"
+//    private static let carTypeKey = "carType"
     
     static var userId: String? {
         get {
@@ -45,23 +45,23 @@ struct UserDefaults {
             self.ud.synchronize()
         }
     }
-    static var phoneNumber: String? {
-        get {
-            return self.ud.stringForKey(phoneNumberKey)
-        }
-        set {
-            self.ud.setObject(newValue, forKey: phoneNumberKey)
-            self.ud.synchronize()
-        }
-    }
-    static var carType: String? {
-        get {
-            return self.ud.stringForKey(carTypeKey)
-        }
-        set {
-            self.ud.setObject(newValue, forKey: carTypeKey)
-            self.ud.synchronize()
-        }
-    }
+//    static var phoneNumber: String? {
+//        get {
+//            return self.ud.stringForKey(phoneNumberKey)
+//        }
+//        set {
+//            self.ud.setObject(newValue, forKey: phoneNumberKey)
+//            self.ud.synchronize()
+//        }
+//    }
+//    static var carType: String? {
+//        get {
+//            return self.ud.stringForKey(carTypeKey)
+//        }
+//        set {
+//            self.ud.setObject(newValue, forKey: carTypeKey)
+//            self.ud.synchronize()
+//        }
+//    }
     
 }

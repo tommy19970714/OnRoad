@@ -50,7 +50,7 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
     
     //ヘッダーの高さを返す
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section > 0 && section < 5{
+        if section > 0 && section < 6{
             return 1
         }else{
             return 0
@@ -70,7 +70,7 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
     
     // セクションの数を返す.
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     
@@ -79,32 +79,39 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.section == 0
         {
-            self.slideMenuController()?.closeLeft()
-            
-//            let notification : NSNotification = NSNotification(name: "segueProfileView", object: self, userInfo: nil)
-//            NSNotificationCenter.defaultCenter().postNotification(notification)
             
         }
         else if indexPath.section == 1
         {
             self.slideMenuController()?.closeLeft()
-
-            let notification : NSNotification = NSNotification(name: "segueRequestWorkView", object: self, userInfo: nil)
-            NSNotificationCenter.defaultCenter().postNotification(notification)
         }
         else if indexPath.section == 2
         {
             self.slideMenuController()?.closeLeft()
-
-            let notification : NSNotification = NSNotification(name: "segueWorkListView", object: self, userInfo: nil)
+            
+            let notification : NSNotification = NSNotification(name: "segueRequestWorkView", object: self, userInfo: nil)
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
         else if indexPath.section == 3
         {
-//            let notification : NSNotification = NSNotification(name: "tagNotification", object: self, userInfo: ["tag": tags[indexPath.row].tag!])
-//            NSNotificationCenter.defaultCenter().postNotification(notification)
-            
             self.slideMenuController()?.closeLeft()
+            
+            let notification : NSNotification = NSNotification(name: "segueWorkListView", object: self, userInfo: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
+        else if indexPath.section == 4
+        {
+            self.slideMenuController()?.closeLeft()
+            
+            let notification : NSNotification = NSNotification(name: "review", object: self, userInfo: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
+        else if indexPath.section == 5
+        {
+            self.slideMenuController()?.closeLeft()
+            
+            let notification : NSNotification = NSNotification(name: "signout", object: self, userInfo: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
         }
         
     }
@@ -132,6 +139,10 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
         {
             return 1
         }
+        else if section == 5
+        {
+            return 1
+        }
         return 0
     }
     // tableの高さ
@@ -140,13 +151,9 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
         {
             return 90
         }
-        else if indexPath.row == 0 && indexPath.section == 1
-        {
-            return 93
-        }
         else
         {
-            return 60
+            return 75
         }
     }
     
@@ -165,21 +172,21 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
         else if indexPath.section == 1 {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
-            cell.textLabel?.text = "仕事を登録"
+            cell.textLabel?.text = "口コミを投稿"
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             return cell
         }
         else if indexPath.section == 2 && indexPath.row == 0 {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
-            cell.textLabel?.text = "登録した仕事"
+            cell.textLabel?.text = "仕事を登録"
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             return cell
         }
         else if indexPath.section == 3 && indexPath.row == 0 {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
-            cell.textLabel?.text = "設定"
+            cell.textLabel?.text = "登録した仕事"
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             return cell
         }
@@ -187,6 +194,13 @@ class LeftMenuViewController : UIViewController, UITableViewDelegate, UITableVie
             
             let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
             cell.textLabel?.text = "アプリを評価する"
+            cell.textLabel?.textAlignment = NSTextAlignment.Center
+            return cell
+        }
+        else if indexPath.section == 5 && indexPath.row == 0 {
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+            cell.textLabel?.text = "サインアウト"
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             return cell
         }
