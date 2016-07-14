@@ -39,6 +39,15 @@ class DataListModel: NSObject {
                 self.dataLists += result
             })
         }
+        if let indexCommentData = tempTypes.indexOf(Types.comment.rawValue)
+        {
+            tempTypes.removeAtIndex(indexCommentData)
+            
+//            let getDataModel = GetDataModel(region: region)
+//            getDataModel.getWorkData({result in
+//                self.dataLists += result
+//            })
+        }
         if let indexWorkData = tempTypes.indexOf(Types.workdata.rawValue)
         {
             tempTypes.removeAtIndex(indexWorkData)

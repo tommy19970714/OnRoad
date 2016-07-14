@@ -46,7 +46,6 @@ class DetailWorkViewController: UIViewController{
         textField.layer.position = CGPoint(x:self.view.bounds.width/2,y:-27)
         textField.enabled = false
         self.textView.addSubview(textField)
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
