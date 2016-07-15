@@ -26,7 +26,7 @@ class ProfileCell: UITableViewCell {
     
     func setCell(user :User) {
         
-        name = UILabel(frame: CGRectMake(self.frame.width/2-50, 26, 100, 35))
+        name = UILabel(frame: CGRectMake(0, 26, self.frame.width, 35))
         name.text = user.username
         name.font = UIFont.systemFontOfSize(23)
         name.textAlignment = NSTextAlignment.Center

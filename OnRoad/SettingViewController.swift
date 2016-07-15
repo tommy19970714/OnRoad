@@ -51,7 +51,34 @@ class SettingViewController: UIViewController{
     
     @IBAction func tapedButton(sender: AnyObject) {
         let saveModel = SaveJsonModel(str: dateToString(myDatePicker.date))
-        saveModel.getJson()
+        saveModel.getJson(dateToString(myDatePicker.date),callback: {success in
+            if success == "エラー"
+            {
+                AlertHelper.showOkAlert("エラー", message: "保存に失敗しました．", parent: self)
+            }
+            else
+            {
+                AlertHelper.showOkAlert("保存", message: success, parent: self)
+            }
+        })
+    }
+    @IBAction func tappedCheckButton(sender: UIButton) {
+        let saveModel = SaveJsonModel(str: dateToString(myDatePicker.date))
+        saveModel.checkSaved(dateToString(myDatePicker.date), callback: {success in
+            if success == true
+            {
+                AlertHelper.showOkAlert("チェック", message: "存在します", parent: self)
+            }
+            else if success == false
+            {
+                AlertHelper.showOkAlert("チェック", message: "存在しません", parent: self)
+            }
+            else
+            {
+                AlertHelper.showOkAlert("エラー", message: "アクセスできません", parent: self)
+            }
+        })
+        
     }
     
     

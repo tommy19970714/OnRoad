@@ -55,6 +55,10 @@ class UserModel: NSObject {
                 if objects.count == 1 && objects.first?.objectForKey("Password") as? String == password
                 {
                     UserDefaults.userId = objects.first?.objectId
+                    UserDefaults.userName = objects.first?.objectForKey("UserName") as? String
+                    UserDefaults.mail = objects.first?.objectForKey("Mail") as? String
+                    //                        UserDefaults.phoneNumber = self.phoneNumber
+                    //                        UserDefaults.carType = self.carType
                     callback(true)
                 }
                 else
@@ -99,10 +103,6 @@ class UserModel: NSObject {
                 self.checkUserId2(self.userName!,password: self.password!,callback: {result in
                     if result == true
                     {
-                        UserDefaults.userName = self.userName
-                        UserDefaults.mail = self.mail
-//                        UserDefaults.phoneNumber = self.phoneNumber
-//                        UserDefaults.carType = self.carType
                         callback(true)
                     }
                     else

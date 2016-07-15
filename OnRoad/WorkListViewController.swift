@@ -110,11 +110,48 @@ class WorkListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            let workDataModel = WorkDataModel()
-            workDataModel.deleteObject(works[indexPath.row])
             
-            works.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            AlertHelper.showAlert("削除", message: "投稿したデータを削除してもよいですか？", cancel: "キャンセル", destructive: nil, others: ["OK"], parent: self) {
+                (buttonIndex: Int) in
+                switch buttonIndex {
+                case 1 :
+                    // OK
+                    if self.iswork == true {
+                        let workDataModel = WorkDataModel()
+                        workDataModel.deleteObject(self.works[indexPath.row],callback: { success in
+                            if success == true
+                            {
+                                AlertHelper.showOkAlert("削除完了", message: "選択された投稿データは削除されました．", parent: self)
+                                self.works.removeAtIndex(indexPath.row)
+                                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                            }
+                            else
+                            {
+                                AlertHelper.showOkAlert("エラー", message: "削除できませんでした．", parent: self)
+                            }
+                        })
+                    }else{
+                        let commentDataModel = CommentDataModel()
+                        commentDataModel.deleteObject(self.works[indexPath.row],callback: { success in
+                            if success == true
+                            {
+                                AlertHelper.showOkAlert("削除完了", message: "選択された投稿データは削除されました．", parent: self)
+                                self.works.removeAtIndex(indexPath.row)
+                                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                            }
+                            else
+                            {
+                                AlertHelper.showOkAlert("エラー", message: "削除できませんでした．", parent: self)
+                            }
+                        })
+                    }
+                    break
+                default :
+                    // キャンセル
+                    break
+                }
+            }
+
         }
     }
 }

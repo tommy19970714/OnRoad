@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OUz-WJ-RAO">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -314,13 +313,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3b-xW-hnz">
+                                <rect key="frame" x="270" y="369" width="60" height="30"/>
+                                <state key="normal" title="チェック"/>
+                                <connections>
+                                    <action selector="tappedCheckButton:" destination="osS-Qe-lkD" eventType="touchUpInside" id="nKd-va-xkL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eCh-6j-mn2" firstAttribute="top" secondItem="M5X-va-Qa7" secondAttribute="bottom" constant="121" id="8bN-bU-NqM"/>
                             <constraint firstItem="M5X-va-Qa7" firstAttribute="centerX" secondItem="i6O-81-lF2" secondAttribute="centerX" id="CSI-tM-lwh"/>
                             <constraint firstItem="PB6-2V-SAZ" firstAttribute="centerX" secondItem="i6O-81-lF2" secondAttribute="centerX" id="UhB-Q4-wh3"/>
+                            <constraint firstItem="M5X-va-Qa7" firstAttribute="top" secondItem="b3b-xW-hnz" secondAttribute="bottom" constant="50" id="c4K-x9-G2S"/>
                             <constraint firstItem="PB6-2V-SAZ" firstAttribute="top" secondItem="Kof-Fz-tyx" secondAttribute="bottom" constant="81" id="eYp-5d-SO1"/>
+                            <constraint firstItem="b3b-xW-hnz" firstAttribute="centerX" secondItem="i6O-81-lF2" secondAttribute="centerX" id="xra-ZO-cg5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -623,7 +631,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="登録をタップすると," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnT-ZA-eoc">
                                                     <rect key="frame" x="146" y="12" width="120" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYH-3l-Z2p">
@@ -645,7 +653,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="と" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCe-uw-jsp">
                                                     <rect key="frame" x="336" y="12" width="18" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="に同意したものとします．" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAz-gX-Kgr">
@@ -654,7 +662,7 @@
                                                         <constraint firstAttribute="width" constant="303" id="C0D-bx-bmz"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

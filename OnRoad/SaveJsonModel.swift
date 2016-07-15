@@ -19,16 +19,40 @@ class SaveJsonModel: NSObject {
         self.requestURL = url + str + ".json"
     }
     
-    func getJson()
+    func checkSaved(str:String,callback:Bool? -> Void)
+    {
+        let query = NCMBQuery(className: "Opendata1")
+        query.whereKey("DateStr", equalTo: str)
+        
+        query.findObjectsInBackgroundWithBlock({(objects, error) in
+            if error != nil {
+                print("error")
+                callback(nil)
+                
+            }else{
+                if objects.count == 0
+                {
+                    callback(false)
+                }
+                else
+                {
+                    callback(true)
+                }
+            }
+        })
+    }
+    func getJson(str:String,callback:String -> Void)
     {
         Alamofire.request(.GET, requestURL!, parameters: ["acl:consumerKey": acl])
             .responseJSON {responce in
                 if responce.result.isSuccess {
                     let json: JSON = JSON(responce.result.value!)
                     
+                    var successCount = 0
+                    
                     let count = json.count
                     
-                    for i in 0...count
+                    for i in 0...count-1
                     {
                         if json[i]["frameworx:operationName"].string == "荷積" || json[i]["frameworx:operationName"].string == "荷卸"
                         {
@@ -50,22 +74,30 @@ class SaveJsonModel: NSObject {
                             obj2.setObject(end, forKey: "EndTime")
                             obj2.setObject(title, forKey: "Title")
                             obj2.setObject(carType, forKey: "carType")
+                            obj2.setObject(str, forKey: "DateStr")
                             // データストアへの保存を実施
                             obj2.saveEventually { (error: NSError!) -> Void in
                                 if error != nil {
                                     // 保存に失敗した場合の処理
+                                    print("error"+String(i))
                                 }else{
                                     // 保存に成功した場合の処理
+                                    successCount += 1
+                                    print("success"+String(i))
                                 }
+
                             }
                         }
-                        
+                        if i == count - 1
+                        {
+                            callback(String(successCount)+"/"+String(count)+"が保存出来ました．")
+                        }
                     }
-                    
                 }
                 else
                 {
                     print("can't open")
+                    callback("エラー")
                 }
                 
         }

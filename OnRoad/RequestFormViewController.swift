@@ -88,7 +88,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
                         }else {
                             message = "送信できませんでした.ネットワーク状態を確認してください．"
                         }
-                        AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
+                        AlertHelper.showAlert("送信完了", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
                             (buttonIndex: Int) in
                             // 押されたボタンのインデックスにて処理を振り分ける
                             switch buttonIndex {

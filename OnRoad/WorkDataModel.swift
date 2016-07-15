@@ -107,12 +107,17 @@ class WorkDataModel: NSObject {
         })
     }
     
-    func deleteObject(object:DataList)
+    func deleteObject(object:DataList,callback: (Bool) -> Void)
     {
         // testクラスへのNCMBObjectを設定
         let obj6 = NCMBObject(className: "WorkData")
         // objectIdプロパティを設定
         obj6.objectId = object.objectId
+        
+        if !CheckReachability("google.com") {
+            callback(false)
+        }
+        
         // 設定されたobjectIdを元にデータストアからデータを取得
         obj6.fetchInBackgroundWithBlock({ (error: NSError!) -> Void in
             if error != nil {
@@ -123,8 +128,10 @@ class WorkDataModel: NSObject {
                 obj6.deleteInBackgroundWithBlock({ (error: NSError!) -> Void in
                     if error != nil {
                         // 削除に失敗した場合の処理
+                        callback(false)
                     }else{
                         // 削除に成功した場合の処理
+                        callback(true)
                     }
                 })
             }
