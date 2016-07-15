@@ -86,7 +86,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
                         if result == true {
                             message = "送信されました！"
                         }else {
-                            message = "送信できませんでした."
+                            message = "送信できませんでした.ネットワーク状態を確認してください．"
                         }
                         AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
                             (buttonIndex: Int) in
