@@ -852,11 +852,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FirstTableCell" rowHeight="438" id="UJe-R8-3Hp">
-                                        <rect key="frame" x="0.0" y="85" width="600" height="438"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FirstTableCell" rowHeight="273" id="UJe-R8-3Hp">
+                                        <rect key="frame" x="0.0" y="85" width="600" height="273"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UJe-R8-3Hp" id="Dh1-Q5-ybv">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="437.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="272.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gxO-zu-Wd7">

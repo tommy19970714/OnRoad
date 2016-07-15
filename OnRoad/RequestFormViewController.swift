@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RequestFormViewController: UITableViewController, UITextFieldDelegate {
+class RequestFormViewController: UITableViewController, UITextFieldDelegate ,UITextViewDelegate{
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: UITextView!
@@ -30,7 +30,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         //textView
-//        textView.delegate = self
+        textView.delegate = self
         textView.text = firstText
         
         //textField
@@ -38,6 +38,9 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
         textField.text = firstTitle
         
         textField.becomeFirstResponder()
+        
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         //navigationbar
         if isLook == false
@@ -176,9 +179,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
         
         
         if textField == self.textField {
-            self.textView.becomeFirstResponder()
-        }else if textField == textView {
-            self.textView.resignFirstResponder()
+            
         }
         
         return true
@@ -206,6 +207,21 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
                                                 self.textView.text = self.textView.text.stringByReplacingOccurrencesOfString(str, withString: str+"\n"+address, range: nil)
                                             }
         })
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 && indexPath.section == 0
+        {
+            return 60
+        }
+        else
+        {
+            if isLook == true
+            {
+                return 700
+            }
+            return 300
+        }
     }
     
 }
