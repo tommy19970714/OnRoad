@@ -14,7 +14,7 @@ class PlaceApiModel: NSObject {
     
     var distance:CLLocationDistance!
     var requestURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-    let accessKey = "AIzaSyAHO_ggw_eXr08BLFFSoxnvCKVF_Bz41IQ"
+    let accessKey = "AIzaSyBN-yL1gfZoradWA0q12jZc5ONRnA3_T4o"
     
     var type:String?
     var types:[String] = []

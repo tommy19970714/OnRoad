@@ -137,7 +137,7 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
             let requestWorkViewController = RequestWorkViewController()
             requestWorkViewController.location = mapView.centerCoordinate
             requestWorkViewController.isFirst = false
-            requestWorkViewController.message = "ここで荷物を下ろす"
+            requestWorkViewController.message = "ここで荷物を降ろす"
             self.navigationController!.pushViewController(requestWorkViewController, animated: true)
         }
         else
@@ -260,7 +260,9 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         self.view.endEditing(true)
         if(self.searchItem.count >= 1)
         {
-            mapView.setCenterCoordinate(self.searchItem[0].placemark.coordinate , animated: true)
+            let span : MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.0015)
+            let region : MKCoordinateRegion = MKCoordinateRegion(center: self.searchItem[0].placemark.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
             searchTableView.hidden = true
             searchTableView.reloadData()
         }
@@ -271,7 +273,9 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
      Cellが選択された際に呼び出されるデリゲートメソッド.
      */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        mapView.setCenterCoordinate(self.searchItem[indexPath.row].placemark.coordinate , animated: true)
+        let span : MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.0015)
+        let region : MKCoordinateRegion = MKCoordinateRegion(center: self.searchItem[indexPath.row].placemark.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
         searchTableView.hidden = true
         searchItem = []
         searchTableView.reloadData()

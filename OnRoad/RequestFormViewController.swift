@@ -218,7 +218,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate ,UIT
         {
             if isLook == true
             {
-                return 700
+                return 560
             }
             return 300
         }
