@@ -368,14 +368,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mySearch.startWithCompletionHandler { (response, error) -> Void in
             
             if error != nil {
-                print("地名無し")
+                
             }
             else if response!.mapItems.count > 0 {
-                for item in response!.mapItems {
-                    
-                    // 検索結果の内名前を出力.
-                    print(item.name)
-                }
+                
                 self.searchItem = response!.mapItems
                 self.searchTableView.reloadData()
             }

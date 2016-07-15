@@ -46,6 +46,9 @@ class WorkDataModel: NSObject {
             obj2.objectId = objectId
         }
         
+        if !CheckReachability("google.com") {
+            callback(false)
+        }
         
         // データストアへの保存を実施
         obj2.saveEventually { (error: NSError!) -> Void in

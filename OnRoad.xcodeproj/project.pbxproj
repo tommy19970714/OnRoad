@@ -47,6 +47,7 @@
 		8FCB51F31D2531E1006E4CBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F21D2531E1006E4CBD /* User.swift */; };
 		8FCB51F51D253719006E4CBD /* PlaceApiMdel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */; };
 		8FCF1EED1D3859360095BFE4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCF1EEC1D3859360095BFE4 /* SystemConfiguration.framework */; };
+		8FCF1EEF1D3859BC0095BFE4 /* CheckReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCF1EEE1D3859BC0095BFE4 /* CheckReachability.swift */; };
 		8FD624E61D36896F00CB99D0 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD624E51D36896F00CB99D0 /* UserModel.swift */; };
 		8FDC02231D35405A00F94146 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC02221D35405A00F94146 /* FirstViewController.swift */; };
 		8FDC02251D3540CE00F94146 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC02241D3540CE00F94146 /* SignupViewController.swift */; };
@@ -126,6 +127,7 @@
 		8FCB51F21D2531E1006E4CBD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8FCB51F41D253719006E4CBD /* PlaceApiMdel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceApiMdel.swift; sourceTree = "<group>"; };
 		8FCF1EEC1D3859360095BFE4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8FCF1EEE1D3859BC0095BFE4 /* CheckReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckReachability.swift; sourceTree = "<group>"; };
 		8FD624E51D36896F00CB99D0 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8FDC02221D35405A00F94146 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		8FDC02241D3540CE00F94146 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				8FB0B3AD1D2E95D20069FAEC /* AlertHelper.swift */,
 				8F05B5C51D32074800EDF712 /* CALayer+RuntimeAttribute.swift */,
 				8F05B5C71D320A1100EDF712 /* DesignableButton.swift */,
+				8FCF1EEE1D3859BC0095BFE4 /* CheckReachability.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				8FA646A61D1FFF65007B864D /* SaveJsonModel.swift in Sources */,
 				8F07A1811D330D040051916D /* WorkListViewController.swift in Sources */,
 				8FA646AA1D2025CF007B864D /* GetDataModel.swift in Sources */,
+				8FCF1EEF1D3859BC0095BFE4 /* CheckReachability.swift in Sources */,
 				8FAB161D1D31473500B4BC77 /* DetailViewController.swift in Sources */,
 				8F3D95F91D21743800BA9EE6 /* CustomAnnotation.swift in Sources */,
 				8F72AF481D23F5C5008CFFB0 /* StreetViewController.swift in Sources */,
@@ -769,8 +773,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OnRoad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toshiki.OnRoad;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nimotsunavi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OnRoad/OnRoad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -784,8 +789,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OnRoad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toshiki.OnRoad;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nimotsunavi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OnRoad/OnRoad-Bridging-Header.h";
 			};

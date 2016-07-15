@@ -49,6 +49,7 @@ class UserModel: NSObject {
         query.findObjectsInBackgroundWithBlock({(objects, error) in
             if error != nil {
                 print("error")
+                callback(nil)
                 
             }else{
                 if objects.count == 1 && objects.first?.objectForKey("Password") as? String == password
@@ -79,6 +80,10 @@ class UserModel: NSObject {
 //        obj2.setObject(phoneNumber, forKey: "PhoneNumber")
 //        obj2.setObject(carType, forKey: "CarType")
         obj2.setObject(password, forKey: "Password")
+        
+        if !CheckReachability("google.com") {
+            callback(false)
+        }
         
         // データストアへの保存を実施
         obj2.saveEventually { (error: NSError!) -> Void in
