@@ -18,7 +18,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
     
     var decideButton:UIBarButtonItem!
     
-    var firstText:String? = "詳細:\n\n日時:\n\n運賃:\n\n連絡先:\n\n"
+    var firstText:String? = "日時:\n\n積地:\n\n降地:\n\n料金:\n\n詳細:\n\n連絡先:\n\n"
     var firstTitle:String?
     
     var objectId:String?
@@ -42,6 +42,12 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
         //navigationbar
         if isLook == false
         {
+            if iswork == true
+            {
+                geocoting(startLocation, str: "積地:")
+                geocoting(endLocation, str: "降地:")
+            }
+
             decideButton = UIBarButtonItem(title: "決定", style: .Plain, target: self, action: #selector(RequestFormViewController.clickDecideButton(_:)))
             self.navigationItem.rightBarButtonItem = decideButton
         }
@@ -181,6 +187,25 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func geocoting(coordinate:CLLocationCoordinate2D,str:String) {
+        // geocoderを作成.
+        let myGeocorder = CLGeocoder()
+        
+        // locationを作成.
+        let myLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        // 逆ジオコーディング開始.
+        myGeocorder.reverseGeocodeLocation(myLocation,
+                                           completionHandler: { (placemarks, error) -> Void in
+                                            
+                                            for placemark in placemarks! {
+                                                
+                                                let address = (placemark.administrativeArea)! +  (placemark.locality)! +  (placemark.name)!
+                                                self.textView.text = self.textView.text.stringByReplacingOccurrencesOfString(str, withString: str+"\n"+address, range: nil)
+                                            }
+        })
     }
     
 }
