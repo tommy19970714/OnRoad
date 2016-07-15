@@ -50,15 +50,16 @@ class SettingViewController: UIViewController{
     }
     
     @IBAction func tapedButton(sender: AnyObject) {
+        AlertHelper.showOkAlert("しばらくお待ちください", message: "アップロードに時間がかかります", parent: self)
         let saveModel = SaveJsonModel(str: dateToString(myDatePicker.date))
         saveModel.getJson(dateToString(myDatePicker.date),callback: {success in
-            if success == "エラー"
+            if success == false
             {
                 AlertHelper.showOkAlert("エラー", message: "保存に失敗しました．", parent: self)
             }
             else
             {
-                AlertHelper.showOkAlert("保存", message: success, parent: self)
+                AlertHelper.showOkAlert("保存", message: "保存しました．", parent: self)
             }
         })
     }

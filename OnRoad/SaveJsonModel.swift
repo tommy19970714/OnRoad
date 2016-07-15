@@ -14,6 +14,8 @@ class SaveJsonModel: NSObject {
     let url = "https://api.frameworxopendata.jp/api/v3/files/digitacho_report/"
     let acl = "321a9095e91da49809fe209f42eba1339944603ed608abdaa1ebae5f514f4e42"
     var requestURL:String?
+    var successCount = 0
+    var count = 0
     
     init(str:String) {
         self.requestURL = url + str + ".json"
@@ -41,16 +43,17 @@ class SaveJsonModel: NSObject {
             }
         })
     }
-    func getJson(str:String,callback:String -> Void)
+    func getJson(str:String,callback:Bool -> Void)
     {
         Alamofire.request(.GET, requestURL!, parameters: ["acl:consumerKey": acl])
             .responseJSON {responce in
                 if responce.result.isSuccess {
                     let json: JSON = JSON(responce.result.value!)
                     
-                    var successCount = 0
                     
                     let count = json.count
+                    self.count = count
+                    var sleepCount = 0
                     
                     for i in 0...count-1
                     {
@@ -79,25 +82,28 @@ class SaveJsonModel: NSObject {
                             obj2.saveEventually { (error: NSError!) -> Void in
                                 if error != nil {
                                     // 保存に失敗した場合の処理
-                                    print("error"+String(i))
+                                    callback(false)
+                                    print("error")
                                 }else{
                                     // 保存に成功した場合の処理
-                                    successCount += 1
-                                    print("success"+String(i))
+                                    self.successCount += 1
+                                    callback(true)
                                 }
-
                             }
-                        }
-                        if i == count - 1
-                        {
-                            callback(String(successCount)+"/"+String(count)+"が保存出来ました．")
+                            usleep(1000)
+                            sleepCount += 1
+                            if sleepCount > 15
+                            {
+                                usleep(500000)
+                                sleepCount = 0
+                            }
                         }
                     }
                 }
                 else
                 {
                     print("can't open")
-                    callback("エラー")
+                    callback(false)
                 }
                 
         }

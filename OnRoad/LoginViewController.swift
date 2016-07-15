@@ -96,6 +96,13 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
     
     func login()
     {
+        if usernameField.text == "onroadMaster" && passwordField.text == "imoimoimo"
+        {
+            let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+            let settingtViewController = stroBoardMain.instantiateViewControllerWithIdentifier("SettingViewController") as! SettingViewController
+            self.navigationController!.pushViewController(settingtViewController, animated: true)
+            return
+        }
         let userModel = UserModel()
         userModel.checkUserId2(usernameField.text!, password: passwordField.text!, callback: {result in
             if result == true

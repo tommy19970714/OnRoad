@@ -314,7 +314,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3b-xW-hnz">
-                                <rect key="frame" x="270" y="369" width="60" height="30"/>
+                                <rect key="frame" x="270" y="269" width="60" height="30"/>
                                 <state key="normal" title="チェック"/>
                                 <connections>
                                     <action selector="tappedCheckButton:" destination="osS-Qe-lkD" eventType="touchUpInside" id="nKd-va-xkL"/>
@@ -326,7 +326,7 @@
                             <constraint firstItem="eCh-6j-mn2" firstAttribute="top" secondItem="M5X-va-Qa7" secondAttribute="bottom" constant="121" id="8bN-bU-NqM"/>
                             <constraint firstItem="M5X-va-Qa7" firstAttribute="centerX" secondItem="i6O-81-lF2" secondAttribute="centerX" id="CSI-tM-lwh"/>
                             <constraint firstItem="PB6-2V-SAZ" firstAttribute="centerX" secondItem="i6O-81-lF2" secondAttribute="centerX" id="UhB-Q4-wh3"/>
-                            <constraint firstItem="M5X-va-Qa7" firstAttribute="top" secondItem="b3b-xW-hnz" secondAttribute="bottom" constant="50" id="c4K-x9-G2S"/>
+                            <constraint firstItem="M5X-va-Qa7" firstAttribute="top" secondItem="b3b-xW-hnz" secondAttribute="bottom" constant="150" id="c4K-x9-G2S"/>
                             <constraint firstItem="PB6-2V-SAZ" firstAttribute="top" secondItem="Kof-Fz-tyx" secondAttribute="bottom" constant="81" id="eYp-5d-SO1"/>
                             <constraint firstItem="b3b-xW-hnz" firstAttribute="centerX" secondItem="i6O-81-lF2" secondAttribute="centerX" id="xra-ZO-cg5"/>
                         </constraints>

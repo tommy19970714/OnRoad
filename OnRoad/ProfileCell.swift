@@ -28,7 +28,7 @@ class ProfileCell: UITableViewCell {
         
         name = UILabel(frame: CGRectMake(0, 26, self.frame.width, 35))
         name.text = user.username
-        name.font = UIFont.systemFontOfSize(23)
+        name.font = UIFont.systemFontOfSize(21)
         name.textAlignment = NSTextAlignment.Center
         self.addSubview(name)
         
