@@ -79,9 +79,7 @@ class SettingViewController: UIViewController{
                 AlertHelper.showOkAlert("エラー", message: "アクセスできません", parent: self)
             }
         })
-        
     }
-    
     
     // 「完了」を押すと閉じる
     func tappedToolBarBtn(sender: UIBarButtonItem) {

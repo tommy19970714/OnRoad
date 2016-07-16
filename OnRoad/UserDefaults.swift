@@ -14,6 +14,7 @@ struct UserDefaults {
     private static let userIdKey = "userId"
     private static let userNameKey = "userName"
     private static let mailKey = "mail"
+    private static let firstLoadKey = "firstLoad"
 //    private static let phoneNumberKey = "phoneNumber"
 //    private static let carTypeKey = "carType"
     
@@ -42,6 +43,16 @@ struct UserDefaults {
         }
         set {
             self.ud.setObject(newValue, forKey: mailKey)
+            self.ud.synchronize()
+        }
+    }
+    
+    static var firstLoad: String? {
+        get {
+            return self.ud.stringForKey(firstLoadKey)
+        }
+        set {
+            self.ud.setObject(newValue, forKey: firstLoadKey)
             self.ud.synchronize()
         }
     }

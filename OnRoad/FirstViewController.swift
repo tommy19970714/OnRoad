@@ -41,13 +41,39 @@ class FirstViewController: UIViewController{
     
     func segueHome(sender:NSNotification)
     {
-        let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+        let popup = PopupController
+            .create(self)
+            .customize(
+                [
+                    .Layout(.Center),
+                    .Animation(.FadeIn),
+                    .BackgroundStyle(.BlackFilter(alpha: 0.8)),
+                    .DismissWhenTaps(true),
+                    .Scrollable(true)
+                ]
+            )
+            .didShowHandler { popup in
+                print("showed popup!")
+            }
+            .didCloseHandler { popup in
+                print("closed popup!")
+        }
         
-        let myNavigationController: UINavigationController = UINavigationController(rootViewController: viewController)
-        let slideMenuController = SlideMenuController(mainViewController: myNavigationController, leftMenuViewController: LeftMenuViewController())
-        let controller = slideMenuController
+        let container = DemoPopupViewController3.instance()
+        container.closeHandler = { _ in
+            popup.dismiss()
+            
+            let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = stroBoardMain.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+            
+            let myNavigationController: UINavigationController = UINavigationController(rootViewController: viewController)
+            let slideMenuController = SlideMenuController(mainViewController: myNavigationController, leftMenuViewController: LeftMenuViewController())
+            let controller = slideMenuController
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
         
-        self.presentViewController(controller, animated: true, completion: nil)
+        popup.show(container)
+        
     }
 }

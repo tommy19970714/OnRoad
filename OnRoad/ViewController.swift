@@ -36,6 +36,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var button5: CustomUIButton!
     @IBOutlet weak var button6: CustomUIButton!
     
+    @IBOutlet weak var label0: UILabel!
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label5: UILabel!
+    @IBOutlet weak var label6: UILabel!
+    
+    
     var searchTableView:UITableView!
     var searchItem:[MKMapItem] = []
     
@@ -106,7 +115,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         searchTableView.delegate = self
         searchTableView.hidden = true
         self.view.addSubview(searchTableView)
-
+        
+        tappedButton0(button0)
+        tappedButton1(button1)
+        tappedButton2(button2)
+        
+        if UserDefaults.firstLoad != "true"
+        {
+            firstView()
+            UserDefaults.firstLoad = "true"
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -125,30 +143,37 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBAction func tappedButton0(sender: CustomUIButton) {
         changeType(sender, type: Types.opendata.rawValue)
+        label0.hidden = true
         sender.changeSw()
     }
     @IBAction func tappedButton1(sender: CustomUIButton) {
         changeType(sender, type: Types.comment.rawValue)
+        label1.hidden = true
         sender.changeSw()
     }
     @IBAction func tappedButton2(sender: CustomUIButton) {
         changeType(sender, type: Types.workdata.rawValue)
+        label2.hidden = true
         sender.changeSw()
     }
     @IBAction func tappedButton3(sender: CustomUIButton) {
         changeType(sender, type: Types.restaurant.rawValue)
+        label3.hidden = true
         sender.changeSw()
     }
     @IBAction func tappedButton4(sender: CustomUIButton) {
         changeType(sender, type: Types.gas_station.rawValue)
+        label4.hidden = true
         sender.changeSw()
     }
     @IBAction func tappedButton5(sender: CustomUIButton) {
         changeType(sender, type: Types.parking.rawValue)
+        label5.hidden = true
         sender.changeSw()
     }
     @IBAction func tappedButton6(sender: CustomUIButton) {
         changeType(sender, type: Types.convenience_store.rawValue)
+        label6.hidden = true
         sender.changeSw()
     }
     
@@ -236,7 +261,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
             return myAnnotation
         }
-        
     }
 
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -439,6 +463,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 ud3.removeObjectForKey("userId")
                 ud3.removeObjectForKey("userName")
                 ud3.removeObjectForKey("mail")
+                ud3.removeObjectForKey("firstLoad")
                 
                 let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
                 let viewController = stroBoardMain.instantiateViewControllerWithIdentifier("FirstViewController") as! FirstViewController
@@ -488,5 +513,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             self.navigationController!.pushViewController(detailViewController, animated: true)
         }
+    }
+    
+    func firstView()
+    {
+        label0.hidden = false
+        label1.hidden = false
+        label2.hidden = false
+        label3.hidden = false
+        label4.hidden = false
+        label5.hidden = false
+        label6.hidden = false
     }
 }

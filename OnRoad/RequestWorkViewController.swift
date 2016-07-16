@@ -90,7 +90,6 @@ class RequestWorkViewController: UIViewController, MKMapViewDelegate, CLLocation
         
         //buttonの設置
         enterButton = UIButton(frame: CGRectMake(0, view.frame.height-70, view.frame.width, 70))
-        enterButton.layer.cornerRadius = 5.0
         enterButton.setTitle(message, forState: .Normal)
         enterButton.backgroundColor = Color.green
         enterButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)

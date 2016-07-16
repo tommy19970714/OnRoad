@@ -19,6 +19,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate ,UIT
     var decideButton:UIBarButtonItem!
     
     var firstText:String? = "日時:\n\n積地:\n\n降地:\n\n料金:\n\n詳細:\n\n連絡先:\n\n"
+    let firstestText = "日時:\n\n積地:\n\n降地:\n\n料金:\n\n詳細:\n\n連絡先:\n\n"
     var firstTitle:String?
     
     var objectId:String?
@@ -47,8 +48,11 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate ,UIT
         {
             if iswork == true
             {
-                geocoting(startLocation, str: "積地:")
-                geocoting(endLocation, str: "降地:")
+                if firstestText == self.textView.text
+                {
+                    geocoting(startLocation, str: "積地:")
+                    geocoting(endLocation, str: "降地:")
+                }
             }
 
             decideButton = UIBarButtonItem(title: "決定", style: .Plain, target: self, action: #selector(RequestFormViewController.clickDecideButton(_:)))
@@ -73,7 +77,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate ,UIT
     {
         if textField.text == nil || (textView.text == firstText)
         {
-            AlertHelper.showAlert("アラート", message: "タイトル又は内容が入力されていません．", cancel: "ok", destructive: nil, others: nil, parent: self){
+            AlertHelper.showAlert("エラー", message: "タイトル又は内容が入力されていません．", cancel: "ok", destructive: nil, others: nil, parent: self){
                 (buttonIndex: Int) in
             }
             return
@@ -134,7 +138,7 @@ class RequestFormViewController: UITableViewController, UITextFieldDelegate ,UIT
                         }else {
                             message = "送信できませんでした."
                         }
-                        AlertHelper.showAlert("アラート", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
+                        AlertHelper.showAlert("送信完了", message: message!, cancel: "ok", destructive: nil, others: nil, parent: self) {
                             (buttonIndex: Int) in
                             // 押されたボタンのインデックスにて処理を振り分ける
                             switch buttonIndex {
