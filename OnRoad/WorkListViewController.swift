@@ -75,14 +75,25 @@ class WorkListViewController: UIViewController, UITableViewDelegate, UITableView
         
         let stroBoardMain = UIStoryboard(name: "Main", bundle: nil)
         let requestFromViewController = stroBoardMain.instantiateViewControllerWithIdentifier("RequestFormViewController") as! RequestFormViewController
-        
-        requestFromViewController.startLocation = works[indexPath.row].location
-        requestFromViewController.endLocation = works[indexPath.row].endPoint
-        requestFromViewController.firstText = works[indexPath.row].text
-        requestFromViewController.firstTitle = works[indexPath.row].title
-        requestFromViewController.objectId = works[indexPath.row].objectId
-        requestFromViewController.isLook = false
-        requestFromViewController.iswork = true
+        if iswork == true
+        {
+            requestFromViewController.startLocation = works[indexPath.row].location
+            requestFromViewController.endLocation = works[indexPath.row].endPoint
+            requestFromViewController.firstText = works[indexPath.row].text
+            requestFromViewController.firstTitle = works[indexPath.row].title
+            requestFromViewController.objectId = works[indexPath.row].objectId
+            requestFromViewController.isLook = false
+            requestFromViewController.iswork = true
+        }
+        else
+        {
+            requestFromViewController.firstText = works[indexPath.row].text
+            requestFromViewController.firstTitle = works[indexPath.row].title
+            requestFromViewController.objectId = works[indexPath.row].objectId
+            requestFromViewController.isLook = false
+            requestFromViewController.iswork = false
+        }
+
         self.navigationController!.pushViewController(requestFromViewController, animated: true)
     }
     

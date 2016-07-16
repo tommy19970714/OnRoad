@@ -17,7 +17,7 @@ class CustomCalloutView: UIView {
         super.init(frame: frame)
         
         //buttonの設置
-        enterButton = CustomDetailButton(frame: CGRectMake(5, 0, 220, 30))
+        enterButton = CustomDetailButton(frame: CGRectMake(5, 0, 180, 30))
         enterButton.layer.cornerRadius = 5.0
         enterButton.setTitle("詳細を確認する", forState: .Normal)
         enterButton.titleLabel?.font = UIFont.systemFontOfSize(15)
@@ -25,8 +25,6 @@ class CustomCalloutView: UIView {
         enterButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         enterButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
         self.addSubview(enterButton)
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

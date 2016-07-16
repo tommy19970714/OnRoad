@@ -217,12 +217,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 
                 myAnnotation.canShowCallout = true
                 
-                let customCallout = CustomCalloutView(frame: CGRectMake(0,0,400,35))
+                let customCallout = CustomCalloutView(frame: CGRectMake(0,0,200,35))
                 customCallout.enterButton.addTarget(self, action: #selector(ViewController.clickDetailButton(_:)), forControlEvents: .TouchUpInside)
                 //値の受け渡し
                 customCallout.enterButton.dataList = customAnnotation.dataList
                 
-                let widthConstraint = NSLayoutConstraint(item: customCallout, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 250)
+                let widthConstraint = NSLayoutConstraint(item: customCallout, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 200)
                 customCallout.addConstraint(widthConstraint)
                 
                 let heightConstraint = NSLayoutConstraint(item: customCallout, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 38)
@@ -290,7 +290,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         {
             searchTableView.reloadData()
         }
-        
         return true
     }
     
