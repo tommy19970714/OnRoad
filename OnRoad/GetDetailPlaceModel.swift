@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import SwiftDate
 
 class GetDetailPlaceModel : NSObject {
     

@@ -8,7 +8,6 @@ target 'OnRoad' do
   pod 'Alamofire’
   pod 'GoogleMaps'
   pod 'SlideMenuControllerSwift'
-  pod 'SwiftDate'
   pod ‘SDWebImage’
 end
 target 'OnRoadTests' do
