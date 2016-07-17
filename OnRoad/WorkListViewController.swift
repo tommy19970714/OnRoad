@@ -87,6 +87,7 @@ class WorkListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else
         {
+            requestFromViewController.startLocation = works[indexPath.row].location
             requestFromViewController.firstText = works[indexPath.row].text
             requestFromViewController.firstTitle = works[indexPath.row].title
             requestFromViewController.objectId = works[indexPath.row].objectId

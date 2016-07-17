@@ -96,5 +96,9 @@ extension DemoPopupViewController3: UIScrollViewDelegate {
         {
             self.closeButton.hidden = false
         }
+        else
+        {
+            self.closeButton.hidden = true
+        }
     }
 }

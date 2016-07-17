@@ -23,11 +23,11 @@
                                     <outlet property="delegate" destination="S1V-Ka-qXC" id="ZME-GE-38K"/>
                                 </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="XUp-GH-X0i">
-                                <rect key="frame" x="280" y="555" width="39" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="XUp-GH-X0i">
+                                <rect key="frame" x="264" y="555" width="71" height="37"/>
                             </pageControl>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yz-NW-a2t">
-                                <rect key="frame" x="204" y="278" width="192" height="44"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yz-NW-a2t">
+                                <rect key="frame" x="204" y="280" width="192" height="40"/>
                                 <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="24"/>
                                 <state key="normal" title="荷物ナビを始める">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,21 +71,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="紹介画面1" translatesAutoresizingMaskIntoConstraints="NO" id="wlT-JU-mhd">
-                                <rect key="frame" x="135" y="187" width="300" height="350"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="紹介画面1" translatesAutoresizingMaskIntoConstraints="NO" id="wlT-JU-mhd">
+                                <rect key="frame" x="150" y="220" width="300" height="350"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="8KW-M2-4tR"/>
                                     <constraint firstAttribute="width" constant="300" id="NcA-mZ-HLY"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="情報が見つかる" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNZ-9R-irv">
-                                <rect key="frame" x="216" y="50" width="168" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情報が見つかる" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNZ-9R-irv">
+                                <rect key="frame" x="216" y="72" width="168" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="オープンデータの荷役時間情報、荷物情報などドライバーが必要な情報をピンで表示します。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLO-el-UdS">
-                                <rect key="frame" x="97" y="87" width="377" height="113.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オープンデータの荷役時間情報、荷物情報などドライバーが必要な情報をピンで表示します。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLO-el-UdS">
+                                <rect key="frame" x="150" y="131" width="300" height="68.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="ogi-Pv-Geh"/>
                                 </constraints>
@@ -124,8 +124,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="紹介画面2" translatesAutoresizingMaskIntoConstraints="NO" id="Tww-Ja-w3w">
                                 <rect key="frame" x="0.0" y="41" width="600" height="291"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="行きたいところに" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KU0-FL-CGz">
-                                <rect key="frame" x="203" y="359" width="192" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行きたいところに" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KU0-FL-CGz">
+                                <rect key="frame" x="204" y="359" width="192" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="C15-h2-UpQ"/>
                                 </constraints>
@@ -133,8 +133,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="トラックドライバーは、常に時間との戦いです。コンビニ、ガソリンスタンドなど地域の必要な情報にすぐにアクセスできます。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9l-3E-eBD">
-                                <rect key="frame" x="41" y="430" width="517" height="128"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="トラックドライバーは、常に時間との戦いです。コンビニ、ガソリンスタンドなど地域の必要な情報にすぐにアクセスできます。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9l-3E-eBD">
+                                <rect key="frame" x="41" y="430" width="519" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="DCz-ZG-GAq"/>
                                 </constraints>
@@ -180,7 +180,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="荷物ナビトラックドライバーのための地図アプリです。 荷役の情報、地域のデータ、荷物の情報といった情報を地図で簡単に探すことができます。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCC-kf-Y0z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="荷物ナビはトラックドライバーのための地図アプリです。 荷役の情報、地域のデータ、荷物の情報といった情報を地図で簡単に探すことができます。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCC-kf-Y0z">
                                 <rect key="frame" x="160" y="409" width="280" height="113.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="BbB-uJ-yOn"/>
@@ -240,8 +240,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="紹介画面3" translatesAutoresizingMaskIntoConstraints="NO" id="7e5-2e-ECj">
-                                <rect key="frame" x="79" y="288" width="442" height="442"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="紹介画面3" translatesAutoresizingMaskIntoConstraints="NO" id="7e5-2e-ECj">
+                                <rect key="frame" x="150" y="288" width="300" height="442"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="442" id="6XF-Qo-cgj"/>
                                     <constraint firstAttribute="width" constant="300" id="Aev-2W-vQw"/>
@@ -275,8 +275,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="荷物ナビを使うことで業務効率を向上させることができます。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFl-O0-B5l">
-                                <rect key="frame" x="20" y="152" width="300" height="116"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="荷物ナビを使うことで業務効率を向上させることができます。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFl-O0-B5l">
+                                <rect key="frame" x="150" y="120" width="300" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="4bO-ng-Kgh"/>
                                 </constraints>
