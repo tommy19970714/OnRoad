@@ -49,7 +49,7 @@ class FirstViewController: UIViewController{
                     .Animation(.FadeIn),
                     .BackgroundStyle(.BlackFilter(alpha: 0.8)),
                     .DismissWhenTaps(true),
-                    .Scrollable(true)
+                    .Scrollable(false)
                 ]
             )
             .didShowHandler { popup in
